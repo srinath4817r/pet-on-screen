@@ -1,0 +1,10 @@
+node_modules/
+dist/
+android/.gradle/
+android/build/
+android/local.properties
+android/app/build/
+android/.wrappergen/
+desktop/native/bin/
+desktop/native/obj/
+desktop/native/publish/
