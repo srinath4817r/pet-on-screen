@@ -17,7 +17,7 @@ class PetQuickTileService : TileService() {
             startActivityAndCollapse(Intent(this, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
             return
         }
-        if (PetOverlayService.running) stopService(Intent(this, PetOverlayService::class.java))
+        if (PetOverlayService.isEnabled(this)) PetOverlayService.stop(this)
         else {
             val intent = Intent(this, PetOverlayService::class.java)
             if (Build.VERSION.SDK_INT >= 26) startForegroundService(intent) else startService(intent)
@@ -26,9 +26,9 @@ class PetQuickTileService : TileService() {
     }
     private fun syncTile() {
         qsTile?.apply {
-            state = if (PetOverlayService.running) Tile.STATE_ACTIVE else Tile.STATE_INACTIVE
+            state = if (PetOverlayService.isEnabled(this@PetQuickTileService)) Tile.STATE_ACTIVE else Tile.STATE_INACTIVE
             label = "Poring Pet"
-            subtitle = if (PetOverlayService.running) "Visible" else "Hidden"
+            subtitle = if (PetOverlayService.isEnabled(this@PetQuickTileService)) "Visible" else "Hidden"
             updateTile()
         }
     }

@@ -25,6 +25,7 @@ contextBridge.exposeInMainWorld('IslandNative', Object.freeze({
   desktopPlay: () => ipcRenderer.send('pet:desktop-play'),
   returnToCapsule: () => ipcRenderer.send('pet:return'),
   petHit: () => ipcRenderer.send('pet:hit'),
+  movePetBy: (dx, dy) => ipcRenderer.send('pet:move-by', { dx, dy }),
   onPetActivity: callback => { if (typeof callback === 'function') ipcRenderer.on('pet:activity', (_e, data) => callback(data)); },
   onVisibility: callback => { if (typeof callback === 'function') ipcRenderer.on('app:visibility', (_e, hidden) => callback(hidden)); }
 }));

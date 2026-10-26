@@ -2,7 +2,7 @@ const { app } = require('electron');
 const fs = require('node:fs');
 const path = require('node:path');
 
-const defaults = { mode: 'both', hotkey: 'Control+Alt', startWithWindows: true, shortcuts: [] };
+const defaults = { mode: 'both', hotkey: 'Control+Alt+Space', startWithWindows: true, shortcuts: [] };
 const file = () => path.join(app.getPath('userData'), 'settings.json');
 
 function read() {

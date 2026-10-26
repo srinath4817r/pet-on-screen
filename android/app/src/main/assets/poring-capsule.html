@@ -97,6 +97,7 @@ body[data-theme=clear] #isl .lyr{text-shadow:0 1px 6px rgba(0,0,0,.6)}
 .plr{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:22px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);flex:none;position:relative;overflow:hidden}
 .art{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font-size:20px;background:linear-gradient(135deg,#ff6f95,#7a5cff);flex:none}
 #isl.playing .art{animation:spin 6s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+.system-media-playing .art{display:none!important}
 .plr .t{flex:1}.plr .t b{max-width:220px!important}
 .plr button,.plr label{width:32px;height:32px;border-radius:50%;border:none;background:rgba(255,255,255,.18);color:#fff;font-size:13px;cursor:pointer;display:grid;place-items:center;flex:none}
 .plr button:active,.plr label:active{transform:scale(.88)}
@@ -111,7 +112,10 @@ body.inside #chgLvl{display:none!important}
 .net button{display:flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);color:#fff;border-radius:22px;padding:8px 16px;font:600 12.5px inherit;font-family:inherit;cursor:pointer;opacity:.65;transition:background .25s,opacity .25s,transform .15s,box-shadow .25s}
 .net button.on{background:rgba(58,134,255,.55);border-color:rgba(170,205,255,.7);opacity:1;box-shadow:0 0 14px rgba(58,134,255,.45)}
 .net button:active{transform:scale(.94)}.net svg{width:18px;height:18px;flex:none}.net button{flex:1;min-width:0;justify-content:flex-start;gap:12px;padding:8px 18px}.net button div{display:flex;flex-direction:column;line-height:1.2;text-align:left;min-width:0}.net button b{font-size:12.5px}.net button small{font-size:10.5px;opacity:.8;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.net-list{display:grid;grid-template-columns:1fr 1fr;gap:6px;max-height:124px;overflow:auto;padding:4px 2px}.net-row{display:flex;align-items:center;gap:8px;padding:6px 9px;border-radius:10px;background:rgba(255,255,255,.09);font-size:11px;min-width:0}.net-row b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}.net-row small{font-size:10px;opacity:.75;white-space:nowrap}.net-actions{display:flex;gap:8px}.net-actions button{border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.1);color:#fff;border-radius:10px;padding:6px 10px;font-size:11px;cursor:pointer}
+.net-list{display:grid;grid-template-columns:1fr 1fr;gap:6px;max-height:124px;overflow:auto;scrollbar-width:none;padding:4px 2px}.net-list::-webkit-scrollbar{display:none}.net-row{display:flex;align-items:center;gap:8px;padding:6px 9px;border-radius:10px;background:rgba(255,255,255,.09);font-size:11px;min-width:0}.net-row b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}.net-row small{font-size:10px;opacity:.75;white-space:nowrap}.net-actions{display:flex;gap:8px}.net-actions button{border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.1);color:#fff;border-radius:10px;padding:6px 10px;font-size:11px;cursor:pointer}
+.mobile-tabs{display:flex;gap:5px;flex:none;overflow-x:auto;scrollbar-width:none;padding:2px 1px 5px}.mobile-tabs::-webkit-scrollbar{display:none}.mobile-tabs button{flex:1;min-width:60px;border:1px solid rgba(255,255,255,.13);border-radius:18px;background:rgba(255,255,255,.07);color:#fff;padding:8px 7px;font:600 11px inherit;font-family:inherit;white-space:nowrap}.mobile-tabs button.on{background:linear-gradient(110deg,#a629dc,#6722a4);box-shadow:0 0 15px #a329bd77;border-color:#efb8ff}.mobile-tools{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;flex:none}.mobile-tool{min-width:0;border:0;background:none;color:white;font:600 9px inherit;font-family:inherit;display:flex;flex-direction:column;align-items:center;gap:5px;padding:2px;cursor:pointer}.mobile-tool i{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;font-size:19px;font-style:normal;background:linear-gradient(140deg,#ffffff26,#ffffff08);border:1px solid #ffffff22;box-shadow:inset 0 1px 1px #ffffff26}.mobile-tool.on i{outline:2px solid #e79cff;box-shadow:0 0 16px #ae42dd77}.mobile-tool span{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.mobile-search{width:100%;box-sizing:border-box;border-radius:16px;padding:9px 12px;border:1px solid #ffffff25;background:#ffffff0d;color:#fff;font:12px inherit;font-family:inherit}.mobile-action{border:1px solid #ffffff25;background:#ffffff12;color:#fff;border-radius:11px;padding:7px 10px;font:11px inherit;font-family:inherit;margin:3px;cursor:pointer}.mobile-note{font-size:11px;opacity:.75;padding:5px 2px}.mobile-settings{display:flex;flex-direction:column;gap:7px;min-height:0}.mobile-setting-tabs{display:flex;gap:6px}.mobile-setting-tabs button{flex:1;border:1px solid #ffffff24;border-radius:18px;background:#ffffff10;color:#fff;padding:8px;font:600 11px inherit;font-family:inherit}.mobile-setting-tabs button.on{background:linear-gradient(110deg,#a629dc,#6722a4);border-color:#efb8ff}.mobile-setting-content{overflow:auto;max-height:350px;scrollbar-width:thin;display:grid;grid-template-columns:1fr 1fr;gap:4px 12px;padding:2px}.mobile-setting-group{display:contents}.mobile-setting-group>b{grid-column:1/-1;color:#ffd2e6;font-size:10px;padding:5px 0 1px}.mobile-setting{display:flex;align-items:center;justify-content:space-between;gap:6px;min-height:29px;border-bottom:1px solid #ffffff12;font-size:10px}.mobile-setting input{accent-color:#b72de0}.mobile-overlay .mobile-setting-content{display:block}
+body.mobile-app:not(.mobile-overlay) #isl .info{height:430px}body.mobile-app:not(.mobile-overlay) #isl .mobile-settings{flex:1;align-items:stretch}body.mobile-app:not(.mobile-overlay) #isl .mobile-setting-content{flex:1;max-height:none}body.mobile-app .mobile-note{white-space:normal;line-height:1.45}body.mobile-app .mobile-settings{white-space:normal}
+.mobile-weather{display:none;color:#fff;font-size:11px;line-height:1.15;text-align:right;white-space:normal;max-width:105px;background:#ffffff12;border:1px solid #ffffff1c;border-radius:13px;padding:6px 8px;cursor:pointer}
 .bolt{width:14px;height:18px;color:#ffe14d;display:none}.ib #ibolt{font-size:0}.xb #xbolt{font-size:0}.hb svg{width:17px;height:17px;display:block}.rb svg{width:25px;height:25px;display:block}.plr button svg,.plr label svg,.art svg{width:17px;height:17px;display:block}.art svg{width:23px;height:23px}
 @keyframes music-bounce{0%,100%{transform:scaleY(.55)}50%{transform:scaleY(1.15)}}
 #isl.playing #viz{animation:music-bounce .5s ease-in-out infinite alternate;transform-origin:bottom}
@@ -123,11 +127,26 @@ body.native{background:transparent!important}body.native #t,body.native #hint{di
 #isl{--sz:1;--pk:1;transition:width .65s cubic-bezier(.34,1.3,.5,1),height .65s cubic-bezier(.34,1.3,.5,1),border-radius .65s cubic-bezier(.34,1.3,.5,1),background .4s,box-shadow .4s,opacity .28s ease,transform .28s ease,filter .28s ease}
 #isl.nt{transition:none!important}
 #isl.hid{opacity:0;pointer-events:none;filter:blur(4px);transform:translateX(-50%) translateY(-24px) scale(calc(var(--sz)*.9))}
+body.mobile-app #isl .tm,body.mobile-app #isl .ib,body.mobile-app #isl .xb{display:none!important}
+html:has(body.mobile-overlay),body.mobile-overlay{background:transparent!important}body.mobile-overlay #c{display:block!important;position:absolute;inset:0;width:100%;height:100%;touch-action:none}body.mobile-overlay #c{visibility:hidden!important}body.mobile-overlay #isl[data-view=idle]{background:transparent!important;border-color:transparent!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}body.mobile-overlay #isl[data-view=exp] .exh canvas{display:none!important}
+body.mobile-overlay #isl[data-view=idle]{width:calc(136px + 82px * var(--pk))!important;height:max(108px,calc(82px * var(--pk)))!important;border-radius:50px!important;overflow:visible;left:50%;top:6px;}
+body.mobile-overlay #isl[data-view=idle] .l-idle{display:grid!important;grid-template-columns:auto 130px;gap:6px;justify-content:center;align-items:center;padding:0!important}
+body.mobile-overlay #isl[data-view=idle] .l-idle .tm,body.mobile-overlay #isl[data-view=idle] .l-idle .ib{display:none!important}
+body.mobile-overlay #isl[data-view=idle] .mobile-weather{display:block!important;grid-column:2;grid-row:1;justify-self:stretch;max-width:none;width:100%;box-sizing:border-box;text-align:left;font-size:11px;line-height:1.2;white-space:normal;position:relative}
+body.mobile-overlay #isl[data-view=idle] .mobile-weather:after{content:'';position:absolute;left:-6px;top:calc(50% - 5px);border-right:6px solid rgba(255,255,255,.07);border-top:5px solid transparent;border-bottom:5px solid transparent}
+body.mobile-overlay #isl[data-view=idle] .l-idle canvas{grid-column:1;grid-row:1;width:calc(82px * var(--pk))!important;height:calc(82px * var(--pk))!important;visibility:visible!important}
+body.mobile-overlay #isl.pet-moving[data-view=idle] .l-idle canvas{filter:drop-shadow(0 0 16px #e78cff)!important;cursor:grabbing}
+body.mobile-overlay #isl[data-view=exp]{width:min(360px,96vw)!important;height:430px!important;border-radius:30px!important;left:50%;top:8px;}
+body.mobile-overlay #isl[data-view=exp] .l-exp{overflow-y:auto;}
+body.mobile-overlay #isl[data-view=exp] .mobile-tools{grid-template-columns:repeat(4,minmax(0,1fr));}
+body.mobile-overlay #isl[data-view=exp] .mobile-tool i{width:48px;height:48px;}
+body:not(.mobile-app) #ai-chat,body:not(.mobile-app) #overlay-toggle,body:not(.mobile-app) .mobile-weather,body.mobile-overlay #overlay-toggle{display:none!important}body.mobile-app .mobile-weather{display:block}body.mobile-app .l-idle{grid-template-columns:1fr auto 1fr}body.mobile-app #isl .l-idle .tm,body.mobile-app #isl .l-idle .ib,body.mobile-app .xb{display:none!important}body.mobile-app .l-idle .mobile-weather{justify-self:end}body.mobile-app .l-exp .exh{padding-right:44px}body.mobile-app .exh .mobile-weather{margin-left:auto}
 /* pet size (--pk) drives the capsule size so the pet always fits */
 #isl[data-view=idle]{width:calc(290px * var(--cw));height:calc(56px * var(--ch));border-radius:calc(28px * var(--ch))}
 #isl[data-view=exp]{width:min(calc(600px * var(--cw)),96vw);height:calc(330px * var(--ch));border-radius:38px}
 #isl[data-view=exp][data-info=on]{height:calc(548px * var(--ch))}
 #isl .l-idle canvas{width:calc(68px*var(--pk))!important;height:calc(54px*var(--pk))!important}
+body.mobile-app:not(.mobile-overlay) #isl .l-idle canvas{width:min(calc(68px*var(--pk)),68px)!important;height:min(calc(54px*var(--pk)),54px)!important}
 #isl .exh canvas{width:calc(71px*var(--pk))!important;height:calc(60px*var(--pk))!important}
 #isl .l-exp{overflow-y:auto;scrollbar-width:none}#isl .l-exp::-webkit-scrollbar{display:none}
 #isl .info{height:190px}
@@ -152,6 +171,21 @@ body.native{background:transparent!important}body.native #t,body.native #hint{di
 .sr input[type=color]{width:26px;height:26px;border:none;padding:0;background:transparent;border-radius:50%;cursor:pointer}
 .sr input[type=color]::-webkit-color-swatch-wrapper{padding:0}.sr input[type=color]::-webkit-color-swatch{border:1px solid rgba(255,255,255,.6);border-radius:50%}
 body.desktop{background:transparent!important}body.desktop #isl,body.desktop #t,body.desktop #hint{display:none!important}body.desktop #c{pointer-events:auto}
+.pet-pref{display:grid;grid-template-columns:68px 1fr auto;align-items:center;gap:10px;color:#fff;font-size:12px;padding:6px 2px;border-bottom:1px solid #ffffff18}.pet-pref input[type=range]{width:100%;accent-color:#d23de7}.pet-pref em{font-style:normal;min-width:38px;text-align:right}.pet-pref select{grid-column:2/4;min-width:0;border-radius:10px;padding:7px 9px;color:#fff;background:#ffffff16;border:1px solid #ffffff2a;font:12px inherit;font-family:inherit}.pet-pref option{color:#191222}body.mobile-overlay #sg,body.mobile-overlay #ai-chat,body.mobile-overlay .mobile-weather,body.mobile-overlay .l-exp .exh{display:none!important}body.mobile-overlay #isl[data-view=idle] .mobile-weather[data-media-bubble="1"]{width:124px;min-height:60px;box-sizing:border-box;display:flex!important;flex-direction:column;justify-content:center;gap:2px;padding:5px 7px;text-align:left}body.mobile-overlay .bubble-track{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:10px;font-weight:700}body.mobile-overlay .bubble-artist{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:8px;opacity:.75}body.mobile-overlay .bubble-controls{display:flex;gap:4px;align-items:center}body.mobile-overlay .bubble-controls button{width:21px;height:18px;padding:0;border-radius:8px;border:1px solid #ffffff35;background:#ffffff20;color:#fff;font-size:11px;line-height:1}</style>
+<style>
+body.mobile-overlay #isl .mobile-weather.bubble-status{--bubble-accent:#cb80ff;min-height:44px;position:relative;isolation:isolate;overflow:hidden;border-color:var(--bubble-accent);box-shadow:0 0 12px color-mix(in srgb,var(--bubble-accent) 45%,transparent);animation:bubble-pulse 2.2s ease-in-out infinite}
+body.mobile-overlay #isl .mobile-weather.bubble-status:before{content:'';position:absolute;z-index:-1;top:-30%;bottom:-30%;left:-45%;width:32%;background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--bubble-accent) 32%,transparent),transparent);transform:skewX(-18deg);animation:bubble-sweep 3.6s ease-in-out infinite;pointer-events:none}
+body.mobile-overlay #isl .mobile-weather.bubble-status .bubble-track,body.mobile-overlay #isl .mobile-weather.bubble-status .bubble-artist,body.mobile-overlay #isl .mobile-weather.bubble-status .bubble-controls{position:relative;z-index:1}
+body.mobile-overlay #isl .mobile-weather.bubble-status[data-bubble-kind=charging],body.mobile-overlay #isl .mobile-weather.bubble-status[data-bubble-kind=timer]{--bubble-accent:#ff70c8}
+body.mobile-overlay #isl .mobile-weather.bubble-status[data-bubble-kind=low-battery],body.mobile-overlay #isl .mobile-weather.bubble-status[data-bubble-kind=alarm]{--bubble-accent:#ff8b58}
+body.mobile-overlay #isl .mobile-weather.bubble-status[data-bubble-kind=bluetooth],body.mobile-overlay #isl .mobile-weather.bubble-status[data-bubble-kind=wifi],body.mobile-overlay #isl .mobile-weather.bubble-status[data-bubble-kind=network]{--bubble-accent:#5cceff}
+body.mobile-overlay #isl .mobile-weather.bubble-status[data-bubble-kind=dnd]{--bubble-accent:#b58cff}
+body.mobile-overlay #isl .mobile-weather.bubble-status[data-bubble-kind=notification]{--bubble-accent:#ffd66b}
+body.mobile-overlay #isl .mobile-weather.bubble-status[data-bubble-kind=music]{--bubble-accent:#83f2db}
+body.mobile-overlay #isl .mobile-weather.bubble-status:after{border-right-color:var(--bubble-accent)}
+@keyframes bubble-pulse{0%,100%{filter:drop-shadow(0 0 2px var(--bubble-accent));transform:scale(1)}50%{filter:drop-shadow(0 0 7px var(--bubble-accent));transform:scale(1.025)}}
+@keyframes bubble-sweep{0%,25%{left:-45%;opacity:0}45%{opacity:1}75%,100%{left:130%;opacity:0}}
+body.mobile-overlay #isl.pet-moving .mobile-weather{opacity:.72}
 </style>
 <script>
 (() => {
@@ -169,6 +203,11 @@ body.desktop{background:transparent!important}body.desktop #isl,body.desktop #t,
   };
   window.IslandNative = {
     platform: 'android',
+    getTrafficBytes: () => parse(PoringBridge.getTrafficBytes(), {rx:0,tx:0}),
+    getNextAlarmTime: () => PoringBridge.getNextAlarmTime(),
+    getDndFilter: () => PoringBridge.getDndFilter(),
+    setPetTimerEnd: end => PoringBridge.setPetTimerEnd(end),
+    getPetTimerEnd: () => PoringBridge.getPetTimerEnd(),
     getNotifications: async (...args) => {
       const rows = parse(PoringBridge.getNotifications(...args), null);
       if (!Array.isArray(rows)) throw new Error('Permission needed: allow notification access in Android settings.');
@@ -196,22 +235,43 @@ body.desktop{background:transparent!important}body.desktop #isl,body.desktop #t,
     openPath: value => PoringBridge.openPath(value),
     pickApp: () => PoringBridge.pickApp(),
     setIgnoreMouse: value => PoringBridge.setIgnoreMouse(value),
+    movePetBy: (dx, dy) => PoringBridge.movePetBy(dx, dy),
     desktopPlay: () => PoringBridge.desktopPlay(),
-    returnToCapsule: () => PoringBridge.returnToCapsule()
+    returnToCapsule: () => PoringBridge.returnToCapsule(),
+    getMobileConfig: () => PoringBridge.getMobileConfig(),
+    saveMobileConfig: config => PoringBridge.saveMobileConfig(config),
+    dynamicBarRunning: () => PoringBridge.dynamicBarRunning(),
+    startDynamicBar: () => PoringBridge.startDynamicBar(),
+    stopDynamicBar: () => PoringBridge.stopDynamicBar(),
+    floatingPetRunning: () => PoringBridge.floatingPetRunning(),
+    getPetLook: () => PoringBridge.getPetLook(),
+    savePetLook: (size, gear, hat) => PoringBridge.savePetLook(size, gear, hat),
+    previewPetPosition: () => PoringBridge.previewPetPosition(),
+    homeOnlyAccessGranted: () => PoringBridge.homeOnlyAccessGranted(),
+    openHomeOnlyAccess: () => PoringBridge.openHomeOnlyAccess(),
+    startFloatingPet: () => PoringBridge.startFloatingPet(),
+    stopFloatingPet: () => PoringBridge.stopFloatingPet(),
+    weatherLocationGranted: () => PoringBridge.weatherLocationGranted(),
+    requestWeatherPermission: () => PoringBridge.requestWeatherPermission(),
+    getCurrentWeather: () => PoringBridge.getCurrentWeather(),
+    resizeCapsule: (width, height) => PoringBridge.resizeCapsule(width, height)
   };
 })();
 </script>
 </head>
 <body>
-<div id="t">PORING PET<small>Long-press the pet for the menu · Drag to drop</small></div>
+<div id="t">PORING PET<small>Tap for actions · Hold 3 seconds to move</small></div>
 <canvas id="c"></canvas>
 <div id="isl" data-view="idle" data-info="off">
- <div class="lyr l-idle"><span class="tm">--:--</span><canvas id="c0" width="148" height="124"></canvas><div class="ib"><svg id="ibolt" class="bolt" viewBox="0 0 16 20" aria-label="Charging"><path d="M9 1 3 11h4l-1 8 7-11H9z" fill="currentColor"/></svg><div class="bat"><u id="ibu" style="width:50%"></u></div><span id="ibp">--%</span></div></div>
+ <div class="lyr l-idle"><span class="tm">--:--</span><canvas id="c0" width="148" height="124"></canvas><span class="mobile-weather" id="weather-idle">Set weather</span><div class="ib"><svg id="ibolt" class="bolt" viewBox="0 0 16 20" aria-label="Charging"><path d="M9 1 3 11h4l-1 8 7-11H9z" fill="currentColor"/></svg><div class="bat"><u id="ibu" style="width:50%"></u></div><span id="ibp">--%</span></div></div>
  <div class="lyr l-exp">
-  <div class="exh"><canvas id="c3" width="148" height="124"></canvas><span class="tm">--:--</span><span class="sp"></span>
+  <div class="exh"><canvas id="c3" width="148" height="124"></canvas><span class="tm">--:--</span><span class="mobile-weather" id="weather-expanded">Set weather</span><span class="sp"></span>
    <button class="hb" id="dp">Desktop Play</button><button class="hb" id="sg" title="Settings"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm9 5.5v-3l-2.3-.6a7 7 0 0 0-.7-1.6l1.2-2-2.1-2.1-2 1.2a7 7 0 0 0-1.6-.7L13 2h-3l-.6 2.7a7 7 0 0 0-1.6.7l-2-1.2-2.1 2.1 1.2 2a7 7 0 0 0-.7 1.6L2 10v3l2.2.6a7 7 0 0 0 .7 1.7l-1.2 2 2.1 2.1 2-1.2a7 7 0 0 0 1.7.7L10 21h3l.6-2.2a7 7 0 0 0 1.7-.7l2 1.2 2.1-2.1-1.2-2a7 7 0 0 0 .7-1.7z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
    <div class="xb"><div class="bat"><u id="xbu" style="width:50%"></u></div><svg id="xbolt" class="bolt" viewBox="0 0 16 20" aria-label="Charging"><path d="M9 1 3 11h4l-1 8 7-11H9z" fill="currentColor"/></svg><span id="xbp">--%</span><small id="xbs"></small></div></div>
+  <button class="hb" id="ai-chat" style="position:absolute;right:70px;top:16px;z-index:3" title="AI chat">AI</button>
   <div class="strip" id="strip"></div>
+  <div class="mobile-tabs" id="mobile-tabs" style="display:none"></div>
+  <div class="mobile-tools" id="mobile-tools" style="display:none"></div>
   <div class="info" id="info"></div>
   <div class="plr"><div class="art"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 18V5l11-2v13M10 8l11-2M7 21a3 2.5 0 1 1-6 0 3 2.5 0 0 1 6 0Zm14-3a3 2.5 0 1 1-6 0 3 2.5 0 0 1 6 0Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="t"><b class="mt">System media unavailable</b><small id="pa">Connect a player or choose a local file</small></div>
    <canvas id="viz" width="72" height="28"></canvas>
@@ -219,7 +279,7 @@ body.desktop{background:transparent!important}body.desktop #isl,body.desktop #t,
   <div class="net"><button id="nw"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M2 9a15 15 0 0 1 20 0M5.5 12.5a10 10 0 0 1 13 0M9 16a5 5 0 0 1 6 0"/><circle cx="12" cy="19.5" r="1" fill="#fff"/></svg><div><b>Wi‑Fi</b><small id="nws">…</small></div></button><button id="nb"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7l10 10-5 4V3l5 4L7 17"/></svg><div><b>Bluetooth</b><small id="nbs">…</small></div></button></div>
  </div>
 </div>
-<div id="hint">Click the capsule to expand · Ctrl+Alt+P hides / shows it</div>
+<div id="hint">Click the capsule to expand · Ctrl+Alt+Space hides / shows it</div>
 <div id="lp"></div><div id="rm"></div><div id="sub"></div>
 <div id="bar"><div id="isd"></div>
   <div style="text-align: center; margin-bottom: 5px;">
@@ -231,6 +291,7 @@ body.desktop{background:transparent!important}body.desktop #isl,body.desktop #t,
 
 <script src="vendor/three.min.js"></script>
 <script>
+window.MODE=new URLSearchParams(location.search).get('mode')==='desktop'?'desktop':new URLSearchParams(location.search).get('mode')==='overlay'?'overlay':'capsule';
 const V=THREE, PI=Math.PI, TAU=PI*2, S=Math.sin, cl=(x,a,b)=>Math.max(a,Math.min(b,x));
 const cv=document.getElementById('c');
 
@@ -509,7 +570,7 @@ const chain={Fall:'Land',Hover:'Land',Hide:'Peek',Peek:'Walk',Shy:'Walk'};
 const pool=['Idle','LookAround','Walk','Happy','Blink','Sleep','Curious','Jump','Roll','Spin','Shy','Cry','Angry','Music','Charge'];
 
 /* ---- Accessories, Colors, Gears ---- */
-let hatSel='', accSel='glasses', glassMode=false, cId=0;
+let hatSel='', accSel='glasses', glassMode=false, cId=0,petScale=1;
 const HEAD=['crown','halo','catears','bunny','wizard','tophat','party','horns','flowers'];
 function setAcc(k){ if(!k){accSel='';hatSel='';} else if(HEAD.includes(k)) hatSel=k; else accSel=k; }
 let useCustomCol = false;
@@ -952,9 +1013,9 @@ let dragPlane = new V.Plane(new V.Vector3(0,0,1), 0);
 function fit(){const w=innerWidth, h=innerHeight; R.setSize(w,h); cam.aspect=w/h; cam.updateProjectionMatrix();}
 function setCam(){
   if(!isDragging){
-    const a=cam.aspect<1?1/cam.aspect*0.75:1, d=dist*Math.max(1,a); 
+    const a=cam.aspect<1?1/cam.aspect*0.75:1, d=(MODE==='overlay'&&isl.dataset.view==='idle'?6.8:dist)*Math.max(1,a); 
     cam.position.set(d*S(az)*Math.cos(el), 1.2+d*S(el) + manualY*0.5, d*Math.cos(az)*Math.cos(el)); 
-    cam.lookAt(0, 0.8 + manualY*0.5, 0); 
+    cam.lookAt(MODE==='overlay'&&isl.dataset.view==='idle'?-1.05:0, 0.8 + manualY*0.5, 0); 
   }
 }
 
@@ -967,10 +1028,10 @@ const HATS=[['None',''],['Flower Crown','flowers'],['Halo','halo'],['Crown','cro
 const ACTS=['Happy','Music','Jump','Spin','Roll','Run','Dash','Sleep','Shy','Coding','Eat','Surprised','Celebration','Angry','Cry'];
 const MENUS=[
  {ic:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20 15 4M9 20 20 4M3 12h18M5 7h14M5 17h14"/></svg>',n:'Color',g:'rgba(255,179,71,.5)',items:()=>[...VAR.map((v,i)=>[v[0],()=>colorButtons[i].click(),dotc(v[1]),!useCustomCol&&cId===i]),{custom:1}]},
- {ic:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8h16M6 8l1 12h10l1-12M9 8V5h6v3M10 11v6M14 11v6"/></svg>',n:'Gear',g:'rgba(120,160,255,.5)',items:()=>GEAR.map(([l,k])=>[l,()=>{accSel=k;},0,accSel===k])},
- {ic:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8 12 3l8 5-2 12H6L4 8Z M4 8h16M9 13h6"/></svg>',n:'Hats',g:'rgba(190,140,255,.5)',items:()=>HATS.map(([l,k])=>[l,()=>{hatSel=k;},0,hatSel===k])},
- {ic:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v5M4.5 7.5l3.5 3.5M19.5 7.5 16 11M5 15a7 7 0 0 0 14 0M8 18l-2 3M16 18l2 3"/></svg>',n:'Angel',g:'rgba(255,230,150,.55)',go:()=>{hatSel='halo';accSel='wings';start('Happy',1);closeMenu();}},
- {ic:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="m10 8 6 4-6 4z"/></svg>',n:'Actions',g:'rgba(255,120,170,.5)',items:()=>ACTS.map(n=>[n,()=>{manualActionUntil=Date.now()+4500;start(n,1);closeMenu();}])},
+ {ic:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8h16M6 8l1 12h10l1-12M9 8V5h6v3M10 11v6M14 11v6"/></svg>',n:'Gear',g:'rgba(120,160,255,.5)',items:()=>GEAR.map(([l,k])=>[l,()=>{accSel=k;SET.acc=k;saveSet();},0,accSel===k])},
+ {ic:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8 12 3l8 5-2 12H6L4 8Z M4 8h16M9 13h6"/></svg>',n:'Hats',g:'rgba(190,140,255,.5)',items:()=>HATS.map(([l,k])=>[l,()=>{hatSel=k;SET.hat=k;saveSet();},0,hatSel===k])},
+ {ic:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v5M4.5 7.5l3.5 3.5M19.5 7.5 16 11M5 15a7 7 0 0 0 14 0M8 18l-2 3M16 18l2 3"/></svg>',n:'Angel',g:'rgba(255,230,150,.55)',go:()=>{hatSel='halo';accSel='wings';SET.hat=hatSel;SET.acc=accSel;saveSet();start('Happy',1);closeMenu();}},
+ {ic:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="m10 8 6 4-6 4z"/></svg>',n:'Actions',g:'rgba(255,120,170,.5)',items:()=>ACTS.map(n=>[n,()=>{manualActionUntil=Date.now()+4500;start(n,1);closeMenu();if(n==='Sleep'&&MODE==='desktop')setTimeout(()=>{try{NAT().returnToCapsule&&NAT().returnToCapsule()}catch(_){}},2400);}])},
  {ic:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="3" width="14" height="18" rx="3"/><path d="M9 7h6M9 12h6M9 17h6"/></svg>',n:'Charge',g:'rgba(61,255,128,.55)',go:()=>{start('Charge',1);closeMenu();}},
  {ic:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v18M5.6 6.6l12.8 10.8M5.6 17.4 18.4 6.6"/><circle cx="12" cy="12" r="8"/></svg>',n:'Material',g:'rgba(120,220,255,.5)',items:()=>[['Solid',0],['Glass',1]].map(([l,i])=>[l,()=>toggleGlass(i),0,glassMode===!!i])}
 ];
@@ -1015,17 +1076,20 @@ rm.addEventListener('click',()=>{if(performance.now()-menuT>400) closeMenu();});
 addEventListener('keydown',e=>{if(e.key==='Escape'&&rm.classList.contains('show')) closeMenu();});
 
 let pressT=0, pressPos=[0,0], menuT=0; const LP=450;
-let hitTimes=[],angryUntil=0;
+let hitTimes=[],angryUntil=0,nativeDragPoint=null,overlayDrag=null,overlayMoved=false,ignoreOverlayClick=false;
 const lpEl=document.getElementById('lp');
 function cancelLP(){clearTimeout(pressT); pressT=0; lpEl.className='';}
 cv.addEventListener('contextmenu',e=>e.preventDefault());
 cv.addEventListener('pointerdown', e=>{
+  // The Android overlay owns tap and long-hold gestures. Don't start the
+  // standalone canvas drag or its short radial-menu timer there.
+  if(MODE==='overlay')return;
   drag=[e.clientX, e.clientY]; moved=0;
   const rc = new V.Raycaster(); rc.setFromCamera(new V.Vector2(e.clientX/innerWidth*2-1, -(e.clientY/innerHeight)*2+1), cam);
   if(rc.intersectObject(body).length){ 
     if(e.button===2){e.preventDefault();e.stopPropagation();cancelLP();isDragging=false;drag=null;const expandFirst=MODE!=='desktop'&&isl.dataset.view!=='exp';if(expandFirst)view('exp');setTimeout(openMenu,expandFirst?380:0);return}
     if(MODE==='desktop'&&e.button===0){const now=Date.now();hitTimes=hitTimes.filter(t=>now-t<1800);hitTimes.push(now);if(hitTimes.length>=3){angryUntil=now+4200;start('Angry',1);hitTimes=[]}else if(hitTimes.length===1)NAT().petHit&&NAT().petHit()}
-    isDragging = true; cur = 'Dragged'; autoC.checked = false;
+    isDragging = true; nativeDragPoint=MODE==='desktop'?[e.screenX,e.screenY]:null; cur = 'Dragged'; autoC.checked = false;
     pressPos=[e.clientX,e.clientY]; clearTimeout(pressT); pressT=setTimeout(openMenu,LP);
     lpEl.style.left=e.clientX+'px'; lpEl.style.top=e.clientY+'px'; lpEl.className=''; void lpEl.offsetWidth; lpEl.className='go'; }
 });
@@ -1033,6 +1097,7 @@ cv.addEventListener('pointerdown', e=>{
 addEventListener('pointermove', e=>{
   if(isDragging){
     if(pressT&&Math.hypot(e.clientX-pressPos[0],e.clientY-pressPos[1])>10) cancelLP();
+    if(nativeDragPoint&&NAT().movePetBy){const dx=e.screenX-nativeDragPoint[0],dy=e.screenY-nativeDragPoint[1];if(dx||dy)NAT().movePetBy(dx,dy);nativeDragPoint=[e.screenX,e.screenY]}
     const rc = new V.Raycaster(); rc.setFromCamera(new V.Vector2(e.clientX/innerWidth*2-1, -(e.clientY/innerHeight)*2+1), cam);
     let pt = new V.Vector3(); rc.ray.intersectPlane(dragPlane, pt);
     px = cl(pt.x, -4, 4); manualY = Math.max(0, pt.y - 1.2); 
@@ -1046,19 +1111,22 @@ addEventListener('pointermove', e=>{
 
 addEventListener('pointerup', e=>{
   cancelLP();
-  if(isDragging){ isDragging = false; if(Date.now()<angryUntil){}else if(manualY > 2.0){ start('ParachuteDrop'); } else { start('Land'); } }
+  if(isDragging){ isDragging = false; nativeDragPoint=null; if(Date.now()<angryUntil){}else if(manualY > 2.0){ start('ParachuteDrop'); } else { start('Land'); } }
   drag=null;
 });
 
 addEventListener('wheel', e=>{dist=cl(dist+e.deltaY*0.005, 5, 16);}, {passive:true});
 addEventListener('resize', fit); fit();
 
+window.PORING_READY=false;
 let last=performance.now();
 (function frame(now){
-  const dt=Math.min((now-last)/1000, 0.05); last=now;
+  if(window.PORING_READY){
+    const dt=Math.min((now-last)/1000, 0.05); last=now;
   update(dt); setCam();
   rim.position.set(-4, 3 + manualY, -5); 
-  window.islRender&&islRender(); R.render(scene, cam); 
+  window.islRender&&islRender(); R.render(scene, cam); if(MODE==='overlay'&&isl.dataset.view==='idle'){const c=PCV.idle;if(c){const g=c.getContext('2d');g.clearRect(0,0,c.width,c.height);try{g.drawImage(cv,0,0,c.width,c.height)}catch(_){}}} 
+  }
   requestAnimationFrame(frame);
 })(last);
 
@@ -1075,17 +1143,17 @@ start('Idle');
    getNetwork() -> {wifi:{on,ssid}, bt:{on}}                   setWifi(on) / setBluetooth(on)
    onMedia(cb({title,artist,playing}))                          mediaControl('toggle'|'next'|'prev')
    openExternal(url) / openPath(path) / pickApp() -> path       desktopPlay() / returnToCapsule()
-  Host controls: window.IslandApp = { toggle(), setHidden(bool), expand(), collapse(), setPetOut(bool), setPetSize(40..160), setCapsuleWidth(70..140), setCapsuleHeight(70..140) }
+  Host controls: window.IslandApp = { toggle(), setHidden(bool), expand(), collapse(), setPetOut(bool), setPetSize(40..240), setCapsuleWidth(70..140), setCapsuleHeight(70..140) }
  Without a host the live hooks show an honest empty state — nothing is faked. */
 (()=>{
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],sl=ms=>new Promise(r=>setTimeout(r,ms));
 const LS={get:k=>{try{return JSON.parse(localStorage.getItem(k))}catch(_){return null}},set:(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(_){}}};
 const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const NAT=()=>window.IslandNative||{};
-const MODE=new URLSearchParams(location.search).get('mode')==='desktop'?'desktop':'capsule';
+const NAT=()=>window.IslandNative||{};window.NAT=NAT;
+
 if(window.IslandNative)document.body.classList.add('native');
-const isl=$('#isl'),st={inside:false,hide:false,busy:false,off:false,charging:false,chgFx:false,lvl:100,eta:'',real:false,bInit:false};let chgT=0;
-const PCV={idle:$('#c0'),exp:$('#c3')};
+const isl=$('#isl'),st={inside:false,hide:false,busy:false,off:false,charging:false,chgFx:false,lvl:100,eta:'',real:false,bInit:false};let chgT=0;window.isl=isl;window.st=st;
+const PCV={idle:$('#c0'),exp:$('#c3')};window.PCV=PCV;
 const RW=140,RH=116,cam2=new V.PerspectiveCamera(36,RW/RH,.1,50);let rings=null;
 const SOLID=new V.MeshPhysicalMaterial({color:0xff5c80,roughness:.2,clearcoat:1,clearcoatRoughness:.1,emissive:0xff1040,emissiveIntensity:.3});
 
@@ -1100,10 +1168,10 @@ clips.Follow={loop:1,f:(u,o,t)=>{o.sq=S(t*2.2)*.03;o.look=fx*1.3;o.lookY=fy*1.2;
 /* ---- capsule pet: close-up render of the 3D pet, framed so it always fits the canvas ---- */
 window.islRender=function(){
   rings=rings||scene.children.filter(o=>o.geometry&&o.geometry.type==='TorusGeometry');
-  root.visible=shadow.visible=ped.visible=true;rings.forEach(o=>o.visible=true);parts.forEach(p=>p.s.visible=true);
+  root.visible=true;shadow.visible=ped.visible=MODE!=='overlay';rings.forEach(o=>o.visible=MODE!=='overlay');parts.forEach(p=>p.s.visible=true);
   if(MODE==='desktop'){ped.visible=false;rings.forEach(o=>o.visible=false)}
   const c=PCV[isl.dataset.view];
-  if(st.inside&&!st.off&&c&&cv.width>0&&cv.height>0&&c.width>0&&c.height>0){
+  if((st.inside||MODE==='overlay')&&!st.off&&c&&cv.width>0&&cv.height>0&&c.width>0&&c.height>0){
     const hs=[ped,shadow,...rings],vs=hs.map(o=>o.visible);hs.forEach(o=>o.visible=false);
     const bm=body.material;SOLID.color.copy(bodyMat.color);SOLID.emissive.copy(coreMat.emissive);body.material=SOLID;
     const pr=R.getPixelRatio(),x=px+sm0.ox,y=manualY+sm0.oy+1.05;
@@ -1155,8 +1223,31 @@ function sync2(){const b=$('#dp');if(b)b.textContent=st.inside?'Desktop Play':'R
 $('#dp').onclick=e=>{e.stopPropagation();if(st.busy)return;st.inside?desktopPlay():returnHome()};
 
 /* ---- views: idle <-> expanded ---- */
-function view(v){isl.dataset.view=v;if(v!=='exp')closeInfo();if(!st.busy&&(v==='exp'||st.inside))start(want(),1);requestAnimationFrame(()=>window.syncCapsuleBounds&&window.syncCapsuleBounds())}
-isl.onclick=e=>{if(e.target.closest('button,label,input,.ap,.info,.plr,.net'))return;view(isl.dataset.view==='idle'?'exp':'idle')};
+function view(v){isl.dataset.view=v;if(MODE==='overlay')document.body.classList.toggle('overlay-expanded',v==='exp');if(v!=='exp')closeInfo();if(!st.busy&&(v==='exp'||st.inside))start(want(),1);requestAnimationFrame(()=>window.syncCapsuleBounds&&window.syncCapsuleBounds())}
+isl.onclick=e=>{if(ignoreOverlayClick){ignoreOverlayClick=false;return}if(e.target.closest('button,label,input,.ap,.info,.plr,.net'))return;view(isl.dataset.view==='idle'?'exp':'idle')};$('#c0').addEventListener('click',e=>{if(ignoreOverlayClick){ignoreOverlayClick=false;e.stopPropagation();return}if(MODE==='overlay'&&isl.dataset.view==='idle'){e.stopPropagation();view('exp')}});
+window.view=view;window.dismissOverlayMenu=()=>{if(MODE==='overlay'&&isl.dataset.view==='exp')view('idle')};
+if(MODE==='overlay')isl.addEventListener('click',e=>{if(isl.dataset.view==='exp'&&!e.target.closest('button,a,input,select,textarea,[data-tool],[data-cat]'))view('idle')});
+if(MODE==='overlay'){
+ let p=null,holdOrigin=null,moved=false,dragReady=false,holdTimer=0;
+ const clearHold=()=>{clearTimeout(holdTimer);holdTimer=0;isl.classList.remove('pet-moving')};
+ isl.addEventListener('pointerdown',e=>{
+  if(e.target.closest('button,label,input,.mobile-tabs,.mobile-tools,.info,.mobile-weather'))return;
+  p=[e.screenX,e.screenY];holdOrigin=p.slice();moved=false;dragReady=false;isl.setPointerCapture?.(e.pointerId);
+  holdTimer=setTimeout(()=>{dragReady=true;clearHold();isl.classList.add('pet-moving');autoC.checked=false;start('Dragged',1)},3000);
+ },{passive:true});
+ isl.addEventListener('pointermove',e=>{
+  if(!p)return;const dx=e.screenX-p[0],dy=e.screenY-p[1];
+  if(!dragReady){if(Math.hypot(e.screenX-holdOrigin[0],e.screenY-holdOrigin[1])>18){clearHold();p=holdOrigin=null;moved=true}return}
+  if(Math.abs(dx)+Math.abs(dy)>2)moved=true;
+  if(moved)NAT().movePetBy?.(dx*devicePixelRatio,dy*devicePixelRatio);p=[e.screenX,e.screenY];
+ },{passive:true});
+ isl.addEventListener('pointerup',e=>{
+  const tap=!!p&&!dragReady,movedPet=moved||dragReady;clearHold();p=holdOrigin=null;
+  if(movedPet){start(want(),1);ignoreOverlayClick=true;setTimeout(()=>ignoreOverlayClick=false,350);return}
+  if(tap&&!e.target.closest('.mobile-weather')){ignoreOverlayClick=true;setTimeout(()=>ignoreOverlayClick=false,350);view(isl.dataset.view==='idle'?'exp':'idle')}
+ });
+ isl.addEventListener('pointercancel',()=>{clearHold();p=holdOrigin=null});
+}
 $$('.exh canvas,.exh .tm').forEach(e=>e.onclick=ev=>{ev.stopPropagation();view('idle')});
 
 /* ---- hide / show (hotkey + host) ---- */
@@ -1174,7 +1265,7 @@ function renderB(){const l=Math.round(st.lvl),txt=st.real?l+'%':'--%',col=st.cha
   $('#xbs').textContent=st.charging?'Charging'+(st.eta?' · '+st.eta:''):(st.eta?st.eta+' left':'');
   u=$('#ibu');u.style.width=Math.max(4,l)+'%';u.style.background=col;$('#ibp').textContent=txt;$('#ibolt').style.display=st.charging?'inline':'none'}
 function setCharging(c){const was=st.charging;st.charging=c;renderB();
-  if(!c){const f=st.chgFx;st.chgFx=false;clearTimeout(chgT);if(f&&!st.inside&&cur==='Charge')start('Idle');return}
+  if(!c){const f=st.chgFx;st.chgFx=false;clearTimeout(chgT);if(was){manualActionUntil=Date.now()+2000;start('Angry',1);chgT=setTimeout(()=>{manualActionUntil=0;if(st.inside)start(want(),1);else if(cur==='Angry')start('Idle')},2000)}else if(f&&!st.inside&&cur==='Charge')start('Idle');return}
   if(st.bInit&&!was){st.chgFx=true;clearTimeout(chgT);   /* plugged in: pet charge animation for 3 seconds */
     chgT=setTimeout(()=>{st.chgFx=false;if(st.inside)start(want(),1);else if(cur==='Charge')start('Idle')},3000);
     if(!st.hide||st.inside)start('Charge',1)}}
@@ -1185,16 +1276,47 @@ else{st.bInit=true;renderB()}
 /* ---- media: local player + real-time visualiser + system media (host) ---- */
 const au=new Audio(),P=window.__P={tr:[],i:0,on:false,t0:0};
 const SYS={title:'',artist:'',playing:false,available:false};
+const liveBubble={notice:null,noticeUntil:0,timerEnd:0,alarmAt:0,dndFilter:-1,rx:0,tx:0,at:0,down:0,up:0,lastPetAction:''};
 let ac,an,srcN,dT,dn=0;const SC=[0,2,4,7,9,12,9,7,4,2];
 function audioCtx(){if(!ac){ac=new(window.AudioContext||window.webkitAudioContext)();an=ac.createAnalyser();an.fftSize=64;an.smoothingTimeConstant=.7;an.connect(ac.destination)}ac.resume();return ac}
 const demoPlay=()=>{};
 const stopAll=()=>{clearInterval(dT);au.pause()};
 const track=()=>P.tr[P.i]||(SYS.available?{n:'Nothing playing',a:'No active system media session',none:1}:{n:'System media unavailable',a:'Choose a local audio file to play',none:1});
+function renderOverlayMediaBubble(){
+  if(MODE!=='overlay')return;
+  const el=$('#weather-idle');if(!el)return;
+  const petReaction=kind=>{
+   if(MODE!=='overlay'||isl.dataset.view!=='idle'||liveBubble.lastPetAction===kind)return;
+   liveBubble.lastPetAction=kind;
+   const action={music:'Music',charging:'Charge','low-battery':'Sleep',bluetooth:'Curious',wifi:'LookAround',timer:'Attention',dnd:'Sleep',network:'Coding',notification:'Surprised',alarm:'Attention'}[kind];
+   if(action)start(action,1);
+  };
+  const active=SYS.title?SYS.playing:P.on;
+ if(active){
+   const title=SYS.title||track().n,artist=SYS.artist||track().a||'Now playing';
+   el.dataset.mediaBubble='1';el.dataset.bubbleKind='music';el.classList.add('bubble-status');petReaction('music');
+   el.innerHTML=`<span class="bubble-track">♫ ${esc(title)}</span><span class="bubble-artist">${esc(artist)}</span><span class="bubble-controls"><button data-media-control="prev" aria-label="Previous track">‹</button><button data-media-control="toggle" aria-label="Pause or play">Ⅱ</button><button data-media-control="next" aria-label="Next track">›</button></span>`;
+   el.querySelectorAll('[data-media-control]').forEach(button=>button.onclick=e=>{e.stopPropagation();const command=button.dataset.mediaControl;if(!ctl(command)){if(command==='toggle')toggle();else step(command==='next'?1:-1)}});return;
+  }
+  const cards=[];
+  if(st.real&&st.charging)cards.push(['Charging',Math.round(st.lvl)+'% · plugged in','charging']);
+  else if(st.real&&st.lvl<=20)cards.push(['Low battery',Math.round(st.lvl)+'% remaining','low-battery']);
+  const bt=(NET.bluetooth.connected||[])[0];if(bt)cards.push(['Bluetooth connected',bt,'bluetooth']);
+  if(NET.wifi.connected)cards.push(['Wi-Fi connected',NET.wifi.ssid||'Connected','wifi']);
+  if(liveBubble.timerEnd>Date.now()){const left=Math.ceil((liveBubble.timerEnd-Date.now())/1000);cards.push(['Timer running',`${Math.floor(left/60)}:${String(left%60).padStart(2,'0')} remaining`,'timer'])}
+  if(liveBubble.dndFilter>1)cards.push(['Sleep / Do Not Disturb','Do Not Disturb is on','dnd']);
+  if(liveBubble.down+liveBubble.up>0)cards.push(['Network activity',`↓ ${liveBubble.down} KB/s · ↑ ${liveBubble.up} KB/s`,'network']);
+  if(liveBubble.notice&&liveBubble.noticeUntil>Date.now())cards.push(['New notification',liveBubble.notice,'notification']);
+  if(liveBubble.alarmAt>Date.now()&&liveBubble.alarmAt-Date.now()<3600000)cards.push(['Alarm soon',`In ${Math.max(1,Math.ceil((liveBubble.alarmAt-Date.now())/60000))} min`,'alarm']);
+  if(cards.length){const card=cards[Math.floor(Date.now()/4500)%cards.length];el.dataset.mediaBubble='1';el.dataset.bubbleKind=card[2];el.classList.add('bubble-status');el.innerHTML=`<span class="bubble-track">${esc(card[0])}</span><span class="bubble-artist">${esc(card[1])}</span>`;petReaction(card[2]);return}
+  if(el.dataset.mediaBubble){el.textContent=el.dataset.weatherLabel||'Tap to enable weather';delete el.dataset.mediaBubble}el.dataset.bubbleKind='weather';el.classList.add('bubble-status');liveBubble.lastPetAction='weather';
+}
 function sync(){const sys=!!SYS.title,on=sys?SYS.playing:P.on,t=sys?{n:SYS.title,a:SYS.artist||'System media'}:track();
+  isl.classList.toggle('system-media-playing',sys&&on);renderOverlayMediaBubble();
   $$('.mt').forEach(e=>e.textContent=t.n);$('#pa').textContent=sys?t.a+' · '+(on?'Playing':'Paused'):t.none?t.a:(on?'Playing':'Paused');
   $$('.ppl').forEach(b=>b.innerHTML=on?'<svg viewBox="0 0 24 24" class="play-icon pause" aria-hidden="true"><path d="M7 5h4v14H7zM14 5h4v14h-4z" fill="currentColor"/></svg>':'<svg viewBox="0 0 24 24" class="play-icon" aria-hidden="true"><path d="m8 5 12 7-12 7z" fill="currentColor"/></svg>');isl.classList.toggle('playing',on);
   if('mediaSession'in navigator&&!sys&&!t.none&&window.MediaMetadata){navigator.mediaSession.metadata=new MediaMetadata({title:t.n,artist:t.a,album:'Poring Capsule'});navigator.mediaSession.playbackState=P.on?'playing':'paused'}
-  if(st.inside&&!st.busy&&cur!==want())start(want(),1)}
+  if((st.inside||isl.dataset.view==='exp')&&!st.busy&&cur!==want())start(want(),1)}
 function play(){if(!P.tr.length){$('#fi').click();return}stopAll();P.on=true;const t=track();
   if(t.demo)demoPlay();else{audioCtx();if(!srcN){srcN=ac.createMediaElementSource(au);srcN.connect(an)}au.src=t.u;au.play().catch(()=>{})}sync()}
 function pause(){P.on=false;stopAll();sync()}
@@ -1233,7 +1355,7 @@ const ago=d=>{const s=(Date.now()-new Date(d))/1000;return s<60?'now':s<3600?(s/
 const norm=i=>({t:i.t||i.title||'—',s:i.s||i.subtitle||'',w:i.w||i.time||'',u:i.u||i.url});
 const HOOKS={
  github:async a=>{
-  if(NAT().getGithub){const x=await NAT().getGithub();return{note:x.note||'Live',items:(x.items||[]).map(norm)}}
+  if(NAT().getGithub){const x=await NAT().getGithub();if(x.ok===false)throw new Error(x.note||'GitHub connection failed');return{note:x.note||'Live',items:(x.items||[]).map(norm)}}
   const H={Authorization:'Bearer '+a.tk,Accept:'application/vnd.github+json'};
   const[r,n]=await Promise.all([fetch('https://api.github.com/user/repos?sort=updated&per_page=8',{headers:H}).then(x=>x.json()),fetch('https://api.github.com/notifications?per_page=30',{headers:H}).then(x=>x.json())]);
   if(!Array.isArray(r))throw new Error(r.message||'bad token');
@@ -1248,10 +1370,77 @@ if(!Array.isArray(apps)){apps=DEF.slice();LS.set('poring-capsule-apps',apps)}
 else if(!LS.get('poring-live-integrations-ready')){apps=[...DEF.filter(d=>!apps.some(a=>a.id===d.id)),...apps];LS.set('poring-capsule-apps',apps);LS.set('poring-live-integrations-ready',true)}
 const save=()=>LS.set('poring-capsule-apps',apps),strip=$('#strip'),info=$('#info');
 function isAppPath(a){return a?.kind==='app'||/^(?:[a-z]:[\\/]|\\\\|file:)/i.test(a?.u||'')}
-function openUrl(u){u=u||'';try{if(/^(https?:|mailto:)/i.test(u)){NAT().openExternal?NAT().openExternal(u):window.open(u,'_blank','noopener')}else if(NAT().openPath)NAT().openPath(u);else window.open(u,'_blank','noopener')}catch(_){}}
+function launchError(message){isl.dataset.info='on';info.innerHTML='<div class="ih"><b>Shortcut could not open</b><span></span><button data-x="close" aria-label="Close">×</button></div><div class="empty">'+esc(message||'Check the saved app location and choose it again.')+'</div>'}
+async function openUrl(u){u=(u||'').trim();try{if(/^(https?:|mailto:)/i.test(u)){if(NAT().openExternal)await NAT().openExternal(u);else window.open(u,'_blank','noopener')}else if(NAT().openPath){const result=await NAT().openPath(u);if(result&&result.ok===false)launchError(result.error)}else window.open(u,'_blank','noopener')}catch(error){launchError(error&&error.message||'Check the saved app location and choose it again.')}}
 const openApp=a=>openUrl(a.u);
 function renderStrip(){strip.innerHTML=apps.map(a=>`<button class="ap${sel===a.id?' on':''}" data-id="${esc(a.id)}" title="Tap: info · Double-tap: open"><span style="background:${esc(a.c)}">${IC[a.i]||'<b>'+esc((a.n[0]||'?').toUpperCase())+'</b>'}</span>${esc(a.n)}${BADGE[a.id]?`<i class="bd">${BADGE[a.id]>99?'99+':BADGE[a.id]}</i>`:''}</button>`).join('')
   +'<button class="ap" data-add="1"><span style="background:rgba(255,255,255,.18)"><b>+</b></span>Add</button>'}
+/* Android control-center sections. Each reading comes from a native API or is explicitly unavailable. */
+const MOBILE_CATS=['Pet','Dev','System','Utilities','Smart','Fit'];let mobileCat='Pet',installedApps=[];
+const MOBILE_TOOLS={
+ Pet:[['Idle','◌','Return to a calm idle animation','pet:Idle'],['Look Around','◉','Look around','pet:LookAround'],['Happy','♥','Happy animation','pet:Happy'],['Curious','?','Curious animation','pet:Curious'],['Sleep','☾','Sleep animation','pet:Sleep'],['Wake Up','☀','Wake up','pet:WakeUp'],['Walk','↔','Walk animation','pet:Walk'],['Run','➜','Run animation','pet:Run'],['Jump','↑','Jump animation','pet:Jump'],['Spin','⟳','Spin animation','pet:Spin'],['Celebrate','✦','Celebrate','pet:Celebration'],['Stop','■','Stop current action','pet:Idle']],
+ Dev:[['GitHub','🐙','Live repositories, issues and pull requests','github'],['Vercel','▲','Live projects and deployments','vercel'],['VS Code','⌘','Choose an installed code editor or remote editor app','editorapps'],['Termux','>_','Requires Termux to be installed on this phone','app:com.termux'],['Files / Apps','📁','Choose from apps installed on this phone','apps']],
+ System:[['Wi-Fi','⌁','Connection and nearby network names','wifi'],['Bluetooth','ᛒ','Connected and nearby device names','bluetooth'],['Brightness','☼','Current screen brightness and Android controls','brightness'],['Sound','♫','Current media volume and Android controls','sound'],['More Controls','⚙','Android settings for restricted system controls','settings']],
+ Utilities:[['Timer','◷','Run a real countdown','timer'],['Notes','▤','Notes saved on this phone','notes'],['Calendar','▦','Calendar access is requested when opened','calendar'],['Calculator','＋','Calculate locally on this phone','calculator'],['Recorder / Translate','◉','Use an installed recorder or translator app','apps']],
+ Smart:[['RAM','▣','Memory reported by Android','ram'],['CPU','⌁','Processor availability reported by Android','cpu'],['Temperature','♨','Android thermal status when supported','temperature'],['Storage','▤','Available and total app data storage','storage'],['Screen Time / Network','◉','Screen time needs Usage Access; network status is available','usage']],
+ Fit:[['Steps','↟','Connect a compatible health source to read steps','health'],['Workout','◉','Workout recording needs a connected health source','health'],['Calories','♨','No measured data until a health source is connected','health'],['Sleep','☾','Sleep data needs a connected health source','health'],['Heart Rate / Activity','♡','Heart rate needs a compatible sensor or health source','health']]
+};
+const mTabs=$('#mobile-tabs'),mTools=$('#mobile-tools');
+const MOBILE_DEFAULTS={categories:MOBILE_CATS,tools:Object.fromEntries(MOBILE_CATS.map(c=>[c,MOBILE_TOOLS[c].map(x=>x[0])]))};
+function mobileConfig(){let c={};try{c=JSON.parse(NAT().getMobileConfig?.()||'{}')}catch(_){}return {...MOBILE_DEFAULTS,...c,categories:[...new Set(['Pet',...(Array.isArray(c.categories)?c.categories:MOBILE_CATS)])],tools:{...MOBILE_DEFAULTS.tools,...c.tools,Pet:[...new Set([...(MOBILE_DEFAULTS.tools.Pet||[]),...(c.tools?.Pet||[])])]}}}
+let mobilePrefs=mobileConfig();
+function renderMobileTabs(){const cats=document.body.classList.contains('mobile-overlay')?['Pet']:MOBILE_CATS.filter(n=>mobilePrefs.categories.includes(n));if(!cats.includes(mobileCat))mobileCat=cats[0]||'Dev';mTabs.innerHTML=cats.map(n=>`<button class="${mobileCat===n?'on':''}" data-cat="${n}">${n}</button>`).join('');mTools.innerHTML=(MOBILE_TOOLS[mobileCat]||[]).filter(x=>(mobilePrefs.tools[mobileCat]||[]).includes(x[0])).map(([n,ic])=>`<button class="mobile-tool" data-tool="${esc(n)}"><i>${ic}</i><span>${esc(n)}</span></button>`).join('')}
+function saveMobilePrefs(){NAT().saveMobileConfig?.(JSON.stringify(mobilePrefs));renderMobileTabs()}
+function mobileSettingRow(title,key,enabled){return `<label class="mobile-setting"><span>${esc(title)}</span><input type="checkbox" data-pref="${esc(key)}" ${enabled?'checked':''}></label>`}
+function showMobileSettings(){
+ isl.dataset.view='exp';isl.dataset.info='on';$('#mobile-tabs').style.display='none';$('#mobile-tools').style.display='none';
+ const running=!!NAT().floatingPetRunning?.();
+ info.innerHTML=bare('Poring Pet')+`<div class="mobile-settings"><div class="mobile-note">${running?'Your animated pet is running on the home screen. It hides while another app is open.':'Start your animated pet on the home screen. It stays out of the way while you use other apps.'} Hold the pet for 3 seconds and drag to move it; tap it to open its actions.</div><label class="pet-pref"><span>Pet size</span><input type="range" id="mobile-pet-size" min="40" max="240" value="${SET.pk}"><em id="mobile-pet-size-value">${SET.pk}%</em></label><label class="pet-pref"><span>Gear</span><select id="mobile-pet-gear">${GEAR.map(([label,key])=>`<option value="${esc(key)}"${SET.acc===key?' selected':''}>${esc(label)}</option>`).join('')}</select></label><label class="pet-pref"><span>Hat</span><select id="mobile-pet-hat">${HATS.map(([label,key])=>`<option value="${esc(key)}"${SET.hat===key?' selected':''}>${esc(label)}</option>`).join('')}</select></label><button class="mobile-action" id="mobile-floating">${running?'Stop floating pet':'Start floating pet'}</button><div class="mobile-note">Android may ask for “Display over other apps” and Usage Access. Usage Access lets Poring Pet show only when the home screen is active.</div></div>`;
+ $('#mobile-pet-size').oninput=e=>{SET.pk=Number(e.target.value);$('#mobile-pet-size-value').textContent=SET.pk+'%';applySize();saveSet()};
+ $('#mobile-pet-gear').onchange=e=>{accSel=e.target.value;SET.acc=accSel;saveSet()};
+ $('#mobile-pet-hat').onchange=e=>{hatSel=e.target.value;SET.hat=hatSel;saveSet()};
+ info.querySelector('.mobile-settings').insertAdjacentHTML('beforeend','<button class="mobile-action" id="mobile-position">Preview &amp; place pet on Home</button><div class="mobile-note">On Home, hold the pet for 3 seconds, drag to choose its position, then release. The position is saved automatically.</div><button class="mobile-action" id="mobile-weather">Enable / refresh local weather</button>');
+ $('#mobile-position').onclick=()=>{if(!NAT().previewPetPosition?.())$('#mobile-position').textContent='Allow overlay access, then tap to preview'};
+ $('#mobile-weather').onclick=()=>{if(NAT().weatherLocationGranted?.())refreshWeather();else NAT().requestWeatherPermission?.()};
+ $('#mobile-floating').onclick=()=>{if(NAT().floatingPetRunning?.()){NAT().stopFloatingPet?.();$('#mobile-floating').textContent='Start floating pet'}else if(NAT().startFloatingPet?.())$('#mobile-floating').textContent='Stop floating pet'};
+}function setupMobile(){document.body.classList.add('mobile-app');$('#strip').style.display='none';$('.net').style.display='none';$('.plr').style.display='none';$('#dp').style.display='none';if(document.body.classList.contains('mobile-overlay')){mobileCat='Pet';document.querySelector('.mobile-tabs').style.display='flex';document.querySelector('.mobile-tools').style.display='grid';renderMobileTabs();isl.dataset.view='idle'}else{showMobileSettings()} }
+window.setupMobile=setupMobile;
+let weatherBusy=false;
+async function refreshWeather(){const labels=[$('#weather-idle'),$('#weather-expanded')].filter(Boolean);if(MODE!=='desktop'&&NAT().getCurrentWeather){if(weatherBusy)return;weatherBusy=true;try{const d=JSON.parse(NAT().getCurrentWeather());if(!d.ok){labels.forEach(x=>x.dataset.weatherLabel=x.textContent=d.permission?'Tap to enable weather':d.message||'Weather unavailable');return}const codes={0:'Clear',1:'Mostly clear',2:'Partly cloudy',3:'Cloudy',45:'Fog',48:'Fog',51:'Drizzle',53:'Drizzle',55:'Drizzle',61:'Rain',63:'Rain',65:'Heavy rain',71:'Snow',73:'Snow',75:'Snow',80:'Showers',81:'Showers',82:'Heavy showers',95:'Thunderstorm',96:'Thunderstorm',99:'Thunderstorm'};labels.forEach(x=>x.dataset.weatherLabel=x.textContent=Math.round(d.temperature)+'°C · '+(codes[d.code]||'Current weather'))}catch(_){labels.forEach(x=>x.dataset.weatherLabel=x.textContent='Weather unavailable')}finally{weatherBusy=false;renderOverlayMediaBubble()}return}const city=LS.get('poring-weather-city')||'',key=NAT().getCredential?.('weather')||'';if(!city||!key){labels.forEach(x=>x.dataset.weatherLabel=x.textContent='Set weather');return}if(weatherBusy)return;weatherBusy=true;try{const r=await fetch('https://api.openweathermap.org/data/2.5/weather?q='+encodeURIComponent(city)+'&units=metric&appid='+encodeURIComponent(key));const d=await r.json();if(!r.ok)throw new Error(d.message||'Weather request failed ('+r.status+')');const temp=Math.round(d.main.temp),desc=d.weather?.[0]?.description||'Current';labels.forEach(x=>x.dataset.weatherLabel=x.textContent=temp+'° · '+desc+' · '+(d.name||city))}catch(e){labels.forEach(x=>x.dataset.weatherLabel=x.textContent='Weather unavailable · tap to fix')}finally{weatherBusy=false;renderOverlayMediaBubble()}}
+async function configureWeather(){let city=LS.get('poring-weather-city')||'',key=NAT().getCredential?.('weather')||'';mobilePanel('Local weather',`<div class="mobile-note">Uses OpenWeather current conditions. Enter a city and API key; the key is encrypted on this phone.</div><input class="mobile-search" id="weather-city" value="${esc(city)}" placeholder="City, country code"><input class="mobile-search" id="weather-key" type="password" placeholder="${key?'API key saved · enter to replace':'OpenWeather API key'}">`);mobileButton('Validate and save',async()=>{city=$('#weather-city').value.trim();const candidate=$('#weather-key').value.trim()||key;if(!city||!candidate){mobilePanel('Local weather','<div class="mobile-note">Enter both a city and an API key.</div>');return}try{const r=await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&units=metric&appid=${encodeURIComponent(candidate)}`);const d=await r.json();if(!r.ok)throw new Error(d.message||`Request failed (${r.status})`);if(!await NAT().setCredential?.('weather',candidate))throw new Error('Secure storage failed');LS.set('poring-weather-city',city);mobilePanel('Local weather',`<div class="mobile-note">Connected · ${esc(d.name)} · ${Math.round(d.main.temp)}° · ${esc(d.weather?.[0]?.description||'Current conditions')}</div>`);refreshWeather()}catch(e){mobilePanel('Local weather','<div class="mobile-note">Connection failed: '+esc(e.message||'provider unavailable')+'</div>')}})}
+$('#weather-idle').onclick=e=>{e.stopPropagation();if(MODE!=='desktop'){if(NAT().weatherLocationGranted?.())refreshWeather();else NAT().requestWeatherPermission?.()}else configureWeather()};$('#weather-expanded').onclick=e=>{e.stopPropagation();if(MODE!=='desktop'){if(NAT().weatherLocationGranted?.())refreshWeather();else NAT().requestWeatherPermission?.()}else configureWeather()};setTimeout(refreshWeather,1500);setInterval(refreshWeather,600000);
+window.mobileWeatherPermissionChanged=()=>{refreshWeather();const b=$('#mobile-weather');if(b&&NAT().weatherLocationGranted?.())b.textContent='Refresh local weather'};
+mTabs.addEventListener('click',e=>{const b=e.target.closest('[data-cat]');if(!b)return;mobileCat=b.dataset.cat;sel='';renderMobileTabs();info.innerHTML='';isl.dataset.info='off'});
+mTools.addEventListener('click',e=>{const b=e.target.closest('[data-tool]');if(!b)return;const name=b.dataset.tool;b.classList.add('on');setTimeout(()=>b.classList.remove('on'),500);showMobileTool(name)});
+function mobilePanel(title,content){isl.dataset.info='on';info.innerHTML=bare(title)+`<div class="il">${content}</div>`}
+function mobileButton(text,fn){const b=document.createElement('button');b.className='mobile-action';b.textContent=text;b.onclick=e=>{e.stopPropagation();fn()};info.querySelector('.il')?.appendChild(b);return b}
+function nativeApps(){try{installedApps=JSON.parse(NAT().getInstalledApps?.()||'[]')}catch(_){installedApps=[]}return installedApps}
+function showMobileTool(name){
+ const item=(MOBILE_TOOLS[mobileCat]||[]).find(x=>x[0]===name);if(!item)return;const action=item[3];
+ if(action?.startsWith('pet:')){start(action.slice(4),1);return}
+ if(action==='apps'||action==='editorapps'){let list=nativeApps();if(action==='editorapps')list=list.filter(a=>/code|editor|vscode|studio|text/i.test(a.name+' '+a.package));const q=`<input class="mobile-search" id="app-search" placeholder="Search installed apps"><div class="mobile-note">${action==='editorapps'?'Select an installed editor. VS Code itself has no standard Android app; configure a remote editor app if you use one.':'Tap an installed app to launch it.'}</div><div id="app-list">${list.length?list.map(a=>`<button class="it" data-package="${esc(a.package)}"><i>▣</i><div><b>${esc(a.name)}</b><small>${esc(a.package)}</small></div><em>Open</em></button>`).join(''):'<div class="mobile-note">No matching launchable apps were found. Install an app first or choose another installed app.</div>'}</div>`;mobilePanel(name,q);$('#app-search').oninput=e=>$$('#app-list [data-package]').forEach(b=>b.style.display=b.textContent.toLowerCase().includes(e.target.value.toLowerCase())?'flex':'none');$('#app-list').onclick=e=>{const row=e.target.closest('[data-package]');if(row&&!NAT().launchApp(row.dataset.package))mobilePanel(name,'<div class="mobile-note">Android could not open this app.</div>')};return}
+ if(action==='github'||action==='vercel'){const a=apps.find(x=>x.h===action);if(a){showInfo(a);return}mobilePanel(name,'<div class="mobile-note">Integration shortcut is missing. Add it from Dev.</div>');return}
+ if(action.startsWith('app:')){const pkg=action.slice(4);const ok=NAT().launchApp?.(pkg);mobilePanel(name,`<div class="mobile-note">${ok?'Opening installed app.':'This app is not installed or Android could not open it.'}</div>`);return}
+ if(action==='wifi'||action==='bluetooth'){pollNet().then(()=>showNetwork(action));return}
+ if(action==='brightness'||action==='sound'){let d={};try{d=JSON.parse(NAT().getDisplaySound?.()||'{}')}catch(_){}mobilePanel(name,`<div class="mobile-note">${action==='brightness'?(d.brightness>=0?'Current brightness: '+d.brightness+'/255':'Brightness unavailable'):'Media volume: '+(d.volume??'Unavailable')+' / '+(d.volumeMax??'—')}<br>Android limits direct control here. Use the system settings panel.</div>`);mobileButton('Open Android settings',()=>NAT().openDeviceSettings(action==='sound'?'sound':'display'));return}
+ if(action==='settings'){mobilePanel(name,'<div class="mobile-note">Wi-Fi, Bluetooth, hotspot, rotation, Do Not Disturb and sound controls are managed by Android. Poring Pet can publish an ongoing status notification for XOS Dynamic Bar; the system controls its appearance.</div>');mobileButton('Open Android settings',()=>NAT().openDeviceSettings('settings'));mobileButton(NAT().dynamicBarRunning?.()?'Stop system Dynamic Bar status':'Show pet in system Dynamic Bar',()=>{if(NAT().dynamicBarRunning?.()){NAT().stopDynamicBar?.();mobilePanel(name,'<div class="mobile-note">Poring Pet system status stopped.</div>')}else if(NAT().startDynamicBar?.()){mobilePanel(name,'<div class="mobile-note">Poring Pet status notification started. Enable it under More Services in XOS Dynamic Bar.</div>')}else mobilePanel(name,'<div class="mobile-note">Allow Poring Pet notifications, then tap Show pet in system Dynamic Bar again.</div>')});return}
+ if(action==='ram'||action==='cpu'||action==='temperature'||action==='storage'||action==='usage'){let d={};try{d=JSON.parse(NAT().getDeviceStats?.()||'{}')}catch(_){}const gb=n=>(n/1073741824).toFixed(1);let text='Not supported on this device.';if(action==='ram'&&d.ramTotal)text=`Available RAM: ${gb(d.ramAvailable)} GB of ${gb(d.ramTotal)} GB`;if(action==='storage'&&d.storageTotal)text=`Available storage: ${gb(d.storageAvailable)} GB of ${gb(d.storageTotal)} GB`;if(action==='cpu'&&d.processors)text=`Logical processors: ${d.processors}. Live CPU usage is not exposed to ordinary apps.`;if(action==='temperature')text=d.thermalStatus==='unsupported'?'Not supported on this device.':`Android thermal status: ${d.thermalStatus}`;if(action==='usage')text='Network connection: '+(navigator.onLine?'Online':'Offline')+'. Screen time requires Usage Access in Android settings.';mobilePanel(name,`<div class="mobile-note">${esc(text)}</div>`);if(action==='usage')mobileButton('Open Usage Access settings',()=>NAT().openDeviceSettings('usage'));return}
+ if(action==='timer'){mobilePanel(name,'<div class="mobile-note">Set a countdown in minutes. It runs while Poring Pet is open.</div><input class="mobile-search" id="timer-min" type="number" min="1" placeholder="Minutes"><div class="mobile-note" id="timer-readout"></div>');mobileButton('Start timer',()=>{const n=Math.max(1,Number($('#timer-min').value)||0);if(!n)return;let end=Date.now()+n*60000;liveBubble.timerEnd=end;NAT().setPetTimerEnd?.(end);renderOverlayMediaBubble();const tick=()=>{let left=Math.max(0,end-Date.now());$('#timer-readout').textContent=`${Math.floor(left/60000)}:${String(Math.floor(left/1000)%60).padStart(2,'0')}`;if(left)setTimeout(tick,500);else {$('#timer-readout').textContent='Timer complete';liveBubble.timerEnd=0;NAT().setPetTimerEnd?.(0);renderOverlayMediaBubble()}};tick()});return}
+ if(action==='notes'){const notes=LS.get('poring-mobile-notes')||'';mobilePanel(name,`<textarea class="mobile-search" id="mobile-note-text" rows="4" placeholder="Write a note">${esc(notes)}</textarea>`);mobileButton('Save note',()=>{LS.set('poring-mobile-notes',$('#mobile-note-text').value);mobilePanel(name,'<div class="mobile-note">Note saved on this phone.</div>')});return}
+ if(action==='calculator'){mobilePanel(name,'<input class="mobile-search" id="calc-input" placeholder="Example: (12 + 3) * 4"><div class="mobile-note" id="calc-result">Calculates locally; expressions only.</div>');mobileButton('Calculate',()=>{const v=$('#calc-input').value;if(!/^[\d\s()+\-*/%.]+$/.test(v)){ $('#calc-result').textContent='Enter a numeric expression.';return}try{const result=Function('"use strict";return ('+v+')')();$('#calc-result').textContent=Number.isFinite(result)?String(result):'Invalid expression'}catch(_){$('#calc-result').textContent='Invalid expression'}});return}
+ if(action==='calendar'){mobilePanel(name,'<div class="mobile-note">Calendar events need calendar permission. This build does not yet read calendar data.</div>');return}
+ if(action==='health'){mobilePanel(name,'<div class="mobile-note">Not connected. Fit data will appear after a supported health source is implemented and authorized. No readings are fabricated.</div>');return}
+ mobilePanel(name,`<div class="mobile-note">${esc(item[2])}</div>`)
+}
+function showAI(){
+ let cfg=LS.get('poring-ai-config')||{endpoint:'https://api.openai.com/v1/chat/completions',model:'gpt-4o-mini'};
+ const currentKey=NAT().getCredential?.('ai')||'';if(!currentKey){mobilePanel('Connect AI',`<div class="mobile-note">Connect an OpenAI compatible chat provider. Your API key is encrypted on this phone.</div><input class="mobile-search" id="ai-key" type="password" placeholder="API key"><input class="mobile-search" id="ai-endpoint" value="${esc(cfg.endpoint)}" placeholder="HTTPS chat completions URL"><input class="mobile-search" id="ai-model" value="${esc(cfg.model)}" placeholder="Model name">`);mobileButton('Validate and connect',async()=>{const key=$('#ai-key').value.trim();cfg={endpoint:$('#ai-endpoint').value.trim(),model:$('#ai-model').value.trim()};if(!key||!/^https:\/\//.test(cfg.endpoint)||!cfg.model){mobilePanel('Connect AI','<div class="mobile-note">Enter an API key, HTTPS endpoint and model.</div>');return}try{const r=await fetch(cfg.endpoint,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+key},body:JSON.stringify({model:cfg.model,messages:[{role:'user',content:'Reply with OK'}],max_tokens:8})});const d=await r.json();if(!r.ok)throw new Error(d.error?.message||`Validation failed (${r.status})`);if(!await NAT().setCredential?.('ai',key))throw new Error('Secure storage failed');LS.set('poring-ai-config',cfg);showAI()}catch(e){mobilePanel('Connect AI','<div class="mobile-note">Connection failed: '+esc(e.message||'provider unavailable')+'</div>')}});return}
+ mobilePanel('AI chat',`<div class="mobile-note" id="ai-status">${NAT().getCredential?.('ai')?'Provider connected.':'Enter a question to connect your provider.'}</div><div id="ai-messages" class="mobile-note"></div><input class="mobile-search" id="ai-prompt" placeholder="Ask about code, text, translation…">`);
+ const send=async()=>{const prompt=$('#ai-prompt')?.value.trim();if(!prompt)return;const key=await NAT().getCredential?.('ai');if(!key){mobilePanel('Connect AI',`<div class="mobile-note">OpenAI compatible chat API. Your key is encrypted on this phone.</div><input class="mobile-search" id="ai-key" type="password" placeholder="API key"><input class="mobile-search" id="ai-endpoint" value="${esc(cfg.endpoint)}" placeholder="Chat completions URL"><input class="mobile-search" id="ai-model" value="${esc(cfg.model)}" placeholder="Model name">`);mobileButton('Validate and connect',async()=>{const k=$('#ai-key').value.trim();cfg={endpoint:$('#ai-endpoint').value.trim(),model:$('#ai-model').value.trim()};if(!k||!/^https:\/\//.test(cfg.endpoint)||!cfg.model){mobilePanel('Connect AI','<div class="mobile-note">Enter an API key, HTTPS endpoint and model.</div>');return}try{const r=await fetch(cfg.endpoint,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+k},body:JSON.stringify({model:cfg.model,messages:[{role:'user',content:'Reply with OK'}],max_tokens:8})});const d=await r.json();if(!r.ok)throw new Error(d.error?.message||`Validation failed (${r.status})`);if(!await NAT().setCredential?.('ai',k))throw new Error('Secure storage failed');LS.set('poring-ai-config',cfg);showAI()}catch(err){mobilePanel('Connect AI','<div class="mobile-note">Connection failed: '+esc(err.message||'provider unavailable')+'</div>')}});return}
+  const out=$('#ai-messages');out.textContent='You: '+prompt+'\nConnecting…';try{let res=await fetch(cfg.endpoint,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+key},body:JSON.stringify({model:cfg.model,messages:[{role:'user',content:prompt}]})});let data=await res.json();if(!res.ok&&!(await NAT().getCredential?.('ai'))){throw new Error(data.error?.message||`Request failed (${res.status})`)}if(!res.ok)throw new Error(data.error?.message||`Request failed (${res.status})`);out.textContent='You: '+prompt+'\n\nAI: '+(data.choices?.[0]?.message?.content||'No response text returned.')}catch(err){out.textContent='Request error: '+(err.message||'Provider unavailable')}};
+ mobileButton('Send',send);mobileButton('Disconnect AI',async()=>{await NAT().deleteCredential?.('ai');showAI()});$('#ai-prompt').onkeydown=e=>{if(e.key==='Enter')send()}
+}
+$('#ai-chat').onclick=e=>{e.stopPropagation();showAI()};
 strip.addEventListener('wheel',e=>{if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){strip.scrollLeft+=e.deltaY;e.preventDefault()}},{passive:false});
 strip.onclick=e=>{e.stopPropagation();const b=e.target.closest('.ap');if(!b)return;if(b.dataset.add)return addApp();
   const a=apps.find(x=>x.id===b.dataset.id);if(!a)return;
@@ -1271,7 +1460,7 @@ async function showInfo(a){sel=a.id;BADGE[a.id]=0;renderStrip();isl.dataset.info
   info.innerHTML=head(a,note)+'<div class="il">'+rows(d.items||[],empty)+'</div>'}
 function ask(a){const n=NEED[a.h];
   info.innerHTML=bare(a.n)+`<div class="fm one"><input id="f1" type="password" placeholder="${esc(n.ph)}"><button id="fs">Connect</button><small>${esc(n.tip)}</small></div>`;
-  const go=async()=>{const v=$('#f1').value.trim();if(!v)return;if(NAT().setCredential)await NAT().setCredential(a.h,v);else{a[n.k]=v;save()}showInfo(a)};
+  const go=async()=>{const v=$('#f1').value.trim();if(!v)return;if(NAT().validateCredential){let check;try{check=JSON.parse(NAT().validateCredential(a.h,v))}catch(_){check={ok:false,message:'Could not validate the credential.'}}if(!check.ok){info.innerHTML=bare('Connection failed')+'<div class="mobile-note">'+esc(check.message||'Credential was not accepted.')+'</div><button class="mobile-action" id="credential-retry">Try again</button>';$('#credential-retry').onclick=()=>ask(a);return}}if(NAT().setCredential){const saved=await NAT().setCredential(a.h,v);if(!saved){info.innerHTML=bare('Connection failed')+'<div class="mobile-note">Could not store the credential securely.</div>';return}}else{a[n.k]=v;save()}showInfo(a)};
   $('#fs').onclick=ev=>{ev.stopPropagation();go()};$('#f1').onkeydown=ev=>{if(ev.key==='Enter')go()}}
 function manage(a){const n=NEED[a.h];
   info.innerHTML=bare(a.n)+`<div class="fm one">${n&&(a[n.k]||NAT().setCredential)?'<button id="b1">Disconnect</button>':''}<button id="b2">Remove shortcut</button><button id="b3">Back</button></div>`;
@@ -1294,7 +1483,12 @@ function renderNet(){const w=NET.wifi,b=NET.bluetooth;$('#nw').classList.toggle(
   $('#nws').textContent=w.connected?(w.ssid+' · '+(w.signal==null?'signal unavailable':w.signal+'%')):w.on?'On · not connected':'Off';
   const connected=(b.connected||[])[0];$('#nbs').textContent=!b.known?'Permission needed':connected?'Connected · '+connected:b.on?'No connected device':'Off'}
 async function pollNet(){if(!NAT().getNetwork){NET.wifi.on=navigator.onLine;renderNet();return}
-  try{const n=await NAT().getNetwork();if(n){Object.assign(NET.wifi,n.wifi||{});if(n.bluetooth)Object.assign(NET.bluetooth,n.bluetooth);else if(n.bt)Object.assign(NET.bluetooth,n.bt)}}catch(_){}renderNet()}
+  try{const n=await NAT().getNetwork();if(n){Object.assign(NET.wifi,n.wifi||{});if(n.bluetooth)Object.assign(NET.bluetooth,n.bluetooth);else if(n.bt)Object.assign(NET.bluetooth,n.bt)}}catch(_){}renderNet();renderOverlayMediaBubble()}
+
+function pollOverlayBubbleData(){if(MODE!=='overlay')return;try{const bytes=NAT().getTrafficBytes?.();if(bytes&&bytes.rx>=0&&bytes.tx>=0){const now=Date.now(),dt=liveBubble.at?Math.max(1,now-liveBubble.at):0;if(dt){liveBubble.down=Math.max(0,Math.round((bytes.rx-liveBubble.rx)*1000/dt/1024));liveBubble.up=Math.max(0,Math.round((bytes.tx-liveBubble.tx)*1000/dt/1024))}liveBubble.rx=bytes.rx;liveBubble.tx=bytes.tx;liveBubble.at=now}}catch(_){}try{liveBubble.timerEnd=NAT().getPetTimerEnd?.()||liveBubble.timerEnd;liveBubble.alarmAt=NAT().getNextAlarmTime?.()||0;liveBubble.dndFilter=NAT().getDndFilter?.()??-1}catch(_){}renderOverlayMediaBubble()}
+if(MODE==='overlay'){pollOverlayBubbleData();setInterval(pollOverlayBubbleData,5000);setInterval(renderOverlayMediaBubble,1000)}
+addEventListener('poring-notification',event=>{if(MODE!=='overlay')return;const n=event.detail||{};liveBubble.notice=[n.title,n.subtitle].filter(Boolean).join(' · ').slice(0,100);liveBubble.noticeUntil=Date.now()+8000;renderOverlayMediaBubble()});
+
 function showNetwork(kind){const wifi=kind==='wifi',data=wifi?NET.wifi:NET.bluetooth,title=wifi?'Wi-Fi networks':'Bluetooth devices';
   const connected=wifi?(data.connected&&data.ssid?[{name:data.ssid,signal:data.signal,connected:true}]:[]):(data.connected||[]).map(name=>({name,connected:true}));
   const available=wifi?(data.available||[]):(data.available||[]).map(name=>typeof name==='string'?{name}:name);
@@ -1308,20 +1502,22 @@ $('#nb').onclick=e=>{e.stopPropagation();showNetwork('bluetooth')};
 addEventListener('online',pollNet);addEventListener('offline',pollNet);setInterval(pollNet,10000);pollNet();
 
 /* ---- settings (inside the expanded panel) ---- */
-const SET=Object.assign({pk:100,cw:100,ch:100,theme:'liquid',col:'0',mat:0,acc:'glasses',hat:'',custom:''},LS.get('poring-capsule-settings')||{});
-const saveSet=()=>LS.set('poring-capsule-settings',SET);
+let nativeLook={};try{nativeLook=JSON.parse(NAT().getPetLook?.()||'{}')}catch(_){}
+const SET=Object.assign({pk:100,cw:100,ch:100,theme:'liquid',col:'0',mat:0,acc:'glasses',hat:'',custom:''},LS.get('poring-capsule-settings')||{},nativeLook);
+const saveSet=()=>{LS.set('poring-capsule-settings',SET);NAT().savePetLook?.(SET.pk,SET.acc,SET.hat)};
 let ntT=0;const nt=()=>{isl.classList.add('nt');clearTimeout(ntT);ntT=setTimeout(()=>isl.classList.remove('nt'),250)};
-function applySize(){isl.style.setProperty('--pk',SET.pk/100);isl.style.setProperty('--cw',SET.cw/100);isl.style.setProperty('--ch',SET.ch/100);requestAnimationFrame(()=>window.syncCapsuleBounds&&window.syncCapsuleBounds())}
-window.syncCapsuleBounds=()=>{if(MODE==='desktop'||!NAT().resizeCapsule)return;const expanded=isl.dataset.view==='exp',w=(expanded?600:290)*SET.cw/100+24,h=expanded?(isl.dataset.info==='on'?548:330)*SET.ch/100+30:56*SET.ch/100+30;NAT().resizeCapsule(w,h)};
+function applySize(){petScale=SET.pk/100;isl.style.setProperty('--pk',petScale);isl.style.setProperty('--cw',SET.cw/100);isl.style.setProperty('--ch',SET.ch/100);requestAnimationFrame(()=>window.syncCapsuleBounds&&window.syncCapsuleBounds())}
+window.syncCapsuleBounds=()=>{if(MODE==='desktop'||!NAT().resizeCapsule)return;const expanded=isl.dataset.view==='exp',w=MODE==='overlay'?(expanded?360:144+82*SET.pk/100):(expanded?600:290)*SET.cw/100+24,h=MODE==='overlay'?(expanded?460:Math.max(120,82*SET.pk/100+16)):(expanded?(isl.dataset.info==='on'?548:330)*SET.ch/100+30:56*SET.ch/100+30);NAT().resizeCapsule(w,h)};
 new MutationObserver(()=>requestAnimationFrame(window.syncCapsuleBounds)).observe(isl,{attributes:true,attributeFilter:['data-view','data-info']});
-function setPetSize(v){SET.pk=cl(+v,40,160);nt();applySize();saveSet()}
+function setPetSize(v){SET.pk=cl(+v,40,240);nt();applySize();saveSet()}
 function setCapsuleWidth(v){SET.cw=cl(+v,70,140);nt();applySize();saveSet()}
 function setCapsuleHeight(v){SET.ch=cl(+v,70,140);nt();applySize();saveSet()}
+if(MODE==='overlay')setInterval(()=>{try{const remote=JSON.parse(NAT().getPetLook?.()||'{}');if((+remote.pk&&+remote.pk!==SET.pk)||remote.acc!==undefined&&remote.acc!==SET.acc||remote.hat!==undefined&&remote.hat!==SET.hat){if(+remote.pk)SET.pk=cl(+remote.pk,40,240);if(remote.acc!==undefined)SET.acc=remote.acc;if(remote.hat!==undefined)SET.hat=remote.hat;accSel=SET.acc;hatSel=SET.hat;applySize()}}catch(_){}},1000);
 const mark=(btn,attr)=>$$('.st ['+attr+']').forEach(b=>b.classList.toggle('on',b===btn));
 function showSettings(){isl.dataset.info='on';sel='';renderStrip();
   const th=[['Liquid glass','liquid'],['Black','black'],['Transparent','clear']];
   info.innerHTML=bare('Settings')+`<div class="st">
-   <div class="sr"><span>Pet size</span><div class="pet-size-control"><input type="range" id="s_pk" min="40" max="160" value="${SET.pk}" aria-label="Pet size"><em id="s_pkv">${SET.pk}%</em></div><button class="confirm-size" id="confirm-pet-size">Confirm</button></div>
+   <div class="sr"><span>Pet size</span><div class="pet-size-control"><input type="range" id="s_pk" min="40" max="240" value="${SET.pk}" aria-label="Pet size"><em id="s_pkv">${SET.pk}%</em></div><button class="confirm-size" id="confirm-pet-size">Confirm</button></div>
    <div class="sr"><span>Capsule width</span><button data-size="cw:-5" aria-label="Narrower capsule">−</button><em id="s_cwv">${SET.cw}%</em><button data-size="cw:5" aria-label="Wider capsule">+</button></div>
    <div class="sr"><span>Capsule height</span><button data-size="ch:-5" aria-label="Shorter capsule">−</button><em id="s_chv">${SET.ch}%</em><button data-size="ch:5" aria-label="Taller capsule">+</button></div>
    <div class="sr"><span>Theme</span>${th.map(([l,k])=>`<button data-th="${k}" class="${SET.theme===k?'on':''}">${l}</button>`).join('')}</div>
@@ -1329,7 +1525,7 @@ function showSettings(){isl.dataset.info='on';sel='';renderStrip();
    <div class="sr"><span>Material</span><button data-mat="0" class="${!glassMode?'on':''}">Solid</button><button data-mat="1" class="${glassMode?'on':''}">Glass</button></div>
    <div class="sr"><span>Pet behavior</span><button data-behavior="default" class="${behavior==='default'?'on':''}">Default · Follow</button><button data-behavior="random" class="${behavior==='random'?'on':''}">Random</button></div>
    <div class="sr"><span>Gear</span><select id="s_gear">${GEAR.map(([l,k])=>`<option value="${k}"${accSel===k?' selected':''}>${esc(l)}</option>`).join('')}</select><span style="width:auto">Hat</span><select id="s_hat">${HATS.map(([l,k])=>`<option value="${k}"${hatSel===k?' selected':''}>${esc(l)}</option>`).join('')}</select></div>
-   <div class="sr"><span>Hotkey</span><small style="opacity:.75">Ctrl + Alt + P hides / shows the capsule and pet</small></div>
+   <div class="sr"><span>Hotkey</span><small style="opacity:.75">Ctrl + Alt hides / shows the capsule and pet</small></div>
   </div>`;
   $('#s_pk').oninput=e=>{$('#s_pkv').textContent=e.target.value+'%'};
   $('#confirm-pet-size').onclick=e=>{e.stopPropagation();setPetSize($('#s_pk').value);closeInfo()};
@@ -1365,8 +1561,8 @@ applySize();document.body.dataset.theme=SET.theme;
 if(SET.col==='c'&&SET.custom)applyCustom(SET.custom);else colorButtons[+SET.col||0].click();
 toggleGlass(SET.mat?1:0);accSel=SET.acc;hatSel=SET.hat;
 if(MODE==='desktop'){document.body.classList.add('desktop','native');st.inside=false;st.hide=false;autoC.checked=true;start('Idle')}
-else{st.inside=true;st.hide=true;isl.classList.add('in');document.body.classList.add('inside');autoC.checked=false;start('LookLoop',1)}
-renderB();sync();sync2();
+else{st.inside=true;st.hide=MODE!=='overlay';isl.classList.add('in');document.body.classList.add('inside');autoC.checked=false;start('LookLoop',1)}
+renderB();sync();sync2();window.PORING_READY=true;
 })();
 </script>
 </body>

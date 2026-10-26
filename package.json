@@ -24,7 +24,7 @@
     "productName": "Poring Pet",
     "asarUnpack": ["desktop/platform-monitor.ps1", "desktop/native/PoringMedia.exe"],
     "files": ["desktop/**/*", "!desktop/native/bin/**", "!desktop/native/obj/**", "!desktop/native/publish/**", "!desktop/native/**/*.pdb", "package.json", "node_modules/three/build/three.min.js"],
-    "win": {"target": ["nsis", "portable"]},
+    "win": {"icon": "desktop/assets/poring.ico", "target": ["nsis", "portable"]},
     "nsis": {"oneClick": false, "allowToChangeInstallationDirectory": true}
   }
 }

@@ -21,6 +21,11 @@ const bridge = `<script>
   };
   window.IslandNative = {
     platform: 'android',
+    getTrafficBytes: () => parse(PoringBridge.getTrafficBytes(), {rx:0,tx:0}),
+    getNextAlarmTime: () => PoringBridge.getNextAlarmTime(),
+    getDndFilter: () => PoringBridge.getDndFilter(),
+    setPetTimerEnd: end => PoringBridge.setPetTimerEnd(end),
+    getPetTimerEnd: () => PoringBridge.getPetTimerEnd(),
     getNotifications: async (...args) => {
       const rows = parse(PoringBridge.getNotifications(...args), null);
       if (!Array.isArray(rows)) throw new Error('Permission needed: allow notification access in Android settings.');
@@ -48,8 +53,26 @@ const bridge = `<script>
     openPath: value => PoringBridge.openPath(value),
     pickApp: () => PoringBridge.pickApp(),
     setIgnoreMouse: value => PoringBridge.setIgnoreMouse(value),
+    movePetBy: (dx, dy) => PoringBridge.movePetBy(dx, dy),
     desktopPlay: () => PoringBridge.desktopPlay(),
-    returnToCapsule: () => PoringBridge.returnToCapsule()
+    returnToCapsule: () => PoringBridge.returnToCapsule(),
+    getMobileConfig: () => PoringBridge.getMobileConfig(),
+    saveMobileConfig: config => PoringBridge.saveMobileConfig(config),
+    dynamicBarRunning: () => PoringBridge.dynamicBarRunning(),
+    startDynamicBar: () => PoringBridge.startDynamicBar(),
+    stopDynamicBar: () => PoringBridge.stopDynamicBar(),
+    floatingPetRunning: () => PoringBridge.floatingPetRunning(),
+    getPetLook: () => PoringBridge.getPetLook(),
+    savePetLook: (size, gear, hat) => PoringBridge.savePetLook(size, gear, hat),
+    previewPetPosition: () => PoringBridge.previewPetPosition(),
+    homeOnlyAccessGranted: () => PoringBridge.homeOnlyAccessGranted(),
+    openHomeOnlyAccess: () => PoringBridge.openHomeOnlyAccess(),
+    startFloatingPet: () => PoringBridge.startFloatingPet(),
+    stopFloatingPet: () => PoringBridge.stopFloatingPet(),
+    weatherLocationGranted: () => PoringBridge.weatherLocationGranted(),
+    requestWeatherPermission: () => PoringBridge.requestWeatherPermission(),
+    getCurrentWeather: () => PoringBridge.getCurrentWeather(),
+    resizeCapsule: (width, height) => PoringBridge.resizeCapsule(width, height)
   };
 })();
 </script>`;

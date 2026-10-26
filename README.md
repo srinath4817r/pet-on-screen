@@ -11,9 +11,19 @@ npm install
 npm start
 ```
 
-The Capsule and pet are transparent, always-on-top windows, with no title bars or taskbar buttons. The capsule opens as a compact pill and expands to its controls; clicking another app collapses it. Pet size is adjusted in expanded Settings and applied with **Confirm**. Right-click the pet for its action menu, including Sleep. Expanded mode follows the cursor by default, with a Random behavior option. In **Desktop Play**, the pet roams around the desktop while the capsule stays available. Only true full-screen apps hide both overlays; pressing `Ctrl+Alt` toggles them, including while full-screen. The app starts with Windows. The tray menu changes modes, hides or shows the app, and quits.
+The Capsule and pet are transparent, always-on-top windows, with no title bars or taskbar buttons. The capsule opens as a compact pill and expands to its controls; clicking another app collapses it. Pet size is adjusted in expanded Settings and applied with **Confirm**. Right-click the pet for its action menu, including Sleep. Expanded mode follows the cursor by default, with a Random behavior option. In **Desktop Play**, the pet roams around the desktop while the capsule stays available. Only true full-screen apps hide both overlays; pressing `Ctrl+Alt+Space` toggles them, including while full-screen. Starting Poring Pet again while it is running displays an “already running” message and brings the existing app back. The app starts with Windows. The tray menu changes modes, hides or shows the app, and quits.
 
 Build the NSIS installer and portable executable with `npm run build`; files are written to `dist/`.
+
+## Downloads
+
+Download the latest builds from [GitHub Releases](https://github.com/srinath4817r/pet-on-screen/releases/latest):
+
+- [Windows installer](https://github.com/srinath4817r/pet-on-screen/releases/latest/download/PoringPet-Setup.exe)
+- [Windows portable app](https://github.com/srinath4817r/pet-on-screen/releases/latest/download/PoringPet-Portable.exe)
+- [Android APK](https://github.com/srinath4817r/pet-on-screen/releases/latest/download/PoringPet-Android.apk)
+
+The Android download is a debug-signed APK. Android may ask you to allow installation from the browser or file manager you used to download it.
 
 ## Android
 

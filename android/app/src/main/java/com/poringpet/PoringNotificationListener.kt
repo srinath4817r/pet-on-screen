@@ -28,8 +28,9 @@ object PoringWebViews {
     fun add(view: WebView) { views.addIfAbsent(view) }
     fun remove(view: WebView) { views.remove(view) }
     fun publish(row: LiveNotification) {
-        if (row.packageName != "com.whatsapp") return
-        val event = JSONObject().put("app", "wa").put("title", row.title).put("subtitle", row.subtitle)
+        if (row.packageName == "com.poringpet") return
+        val event = JSONObject().put("app", if (row.packageName == "com.whatsapp") "wa" else row.packageName)
+            .put("title", row.title).put("subtitle", row.subtitle)
         views.forEach { view -> view.post {
             view.evaluateJavascript("window.dispatchEvent(new CustomEvent('poring-notification',{detail:$event}))", null)
         } }

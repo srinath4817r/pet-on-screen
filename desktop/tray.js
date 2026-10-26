@@ -1,6 +1,8 @@
 const { Tray, Menu, nativeImage, app } = require('electron');
+const fs = require('node:fs');
+const path = require('node:path');
 function createTray(actions) {
-  const svg = '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path fill="#ff6f95" d="M16 2C7 2 2 9 2 17c0 8 6 13 14 13s14-5 14-13C30 9 25 2 16 2Z"/><ellipse fill="#fff" opacity=".8" cx="11" cy="11" rx="4" ry="2"/></svg>';
+  const svg = fs.readFileSync(path.join(__dirname, 'assets', 'poring-logo.svg'), 'utf8');
   const icon = nativeImage.createFromDataURL(`data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`);
   const tray = new Tray(icon);
   tray.setToolTip('Poring Pet');

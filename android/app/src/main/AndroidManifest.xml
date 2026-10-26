@@ -1,9 +1,11 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <queries><intent><action android:name="android.intent.action.MAIN"/><category android:name="android.intent.category.LAUNCHER"/></intent></queries>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.NEARBY_WIFI_DEVICES" android:usesPermissionFlags="neverForLocation" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
@@ -13,24 +15,27 @@
     <uses-permission android:name="android.permission.BLUETOOTH_SCAN" android:usesPermissionFlags="neverForLocation" />
     <uses-permission android:name="android.permission.BLUETOOTH" android:maxSdkVersion="30" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" android:maxSdkVersion="30" />
-    <application android:theme="@android:style/Theme.Material.NoActionBar" android:label="Poring Pet" android:usesCleartextTraffic="false" android:hardwareAccelerated="true">
+    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS" tools:ignore="ProtectedPermissions" />
+    <application android:theme="@android:style/Theme.Material.NoActionBar" android:label="Poring Pet" android:icon="@mipmap/ic_launcher" android:roundIcon="@mipmap/ic_launcher" android:usesCleartextTraffic="false" android:hardwareAccelerated="true">
         <activity android:name=".MainActivity" android:exported="true">
             <intent-filter><action android:name="android.intent.action.MAIN"/><category android:name="android.intent.category.LAUNCHER"/></intent-filter>
         </activity>
-        <service android:name=".PetOverlayService" android:exported="false" android:foregroundServiceType="specialUse">
+        <service android:name=".PetOverlayService" android:icon="@mipmap/ic_launcher" android:process=":pet" android:exported="false" android:stopWithTask="false" android:foregroundServiceType="specialUse">
             <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE" android:value="User-controlled floating pet overlay" />
         </service>
-        <service android:name=".PoringNotificationListener" android:label="Poring Pet notification access" android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE" android:exported="true">
+        <service android:name=".DynamicBarService" android:icon="@mipmap/ic_launcher" android:exported="false" android:foregroundServiceType="specialUse">
+            <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE" android:value="User-controlled Dynamic Bar overlay" />
+        </service>
+        <service android:name=".SystemDynamicBarService" android:icon="@mipmap/ic_launcher" android:exported="false" android:foregroundServiceType="specialUse">
+            <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE" android:value="User-controlled pet status notification for the phone Dynamic Bar" />
+        </service>
+        <service android:name=".PoringNotificationListener" android:label="Poring Pet notification access" android:icon="@mipmap/ic_launcher" android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE" android:exported="true">
             <intent-filter><action android:name="android.service.notification.NotificationListenerService"/></intent-filter>
         </service>
-        <service android:name=".PetQuickTileService" android:label="Poring Pet" android:icon="@android:drawable/star_on" android:permission="android.permission.BIND_QUICK_SETTINGS_TILE" android:exported="true">
+        <service android:name=".PetQuickTileService" android:label="Poring Pet" android:icon="@drawable/ic_poring_tile" android:permission="android.permission.BIND_QUICK_SETTINGS_TILE" android:exported="true">
             <intent-filter><action android:name="android.service.quicksettings.action.QS_TILE"/></intent-filter>
             <meta-data android:name="android.service.quicksettings.ACTIVE_TILE" android:value="true" />
             <meta-data android:name="android.service.quicksettings.TOGGLEABLE_TILE" android:value="true" />
         </service>
-        <receiver android:name=".PetWidgetProvider" android:exported="true">
-            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE"/></intent-filter>
-            <meta-data android:name="android.appwidget.provider" android:resource="@xml/pet_widget_info"/>
-        </receiver>
     </application>
 </manifest>

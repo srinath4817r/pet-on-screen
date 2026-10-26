@@ -15,14 +15,33 @@ public static class PoringWindowState {
   [DllImport("user32.dll")] public static extern IntPtr MonitorFromWindow(IntPtr hWnd, uint flags);
   [DllImport("user32.dll", CharSet=CharSet.Auto)] public static extern bool GetMonitorInfo(IntPtr monitor, ref MONITORINFO info);
 }
+public static class PoringHotkey {
+  public static void Start() {
+    var worker = new System.Threading.Thread(() => {
+      var previous = false;
+      while (true) {
+        var pressed = (PoringWindowState.GetAsyncKeyState(0x11) & 0x8000) != 0 &&
+                      (PoringWindowState.GetAsyncKeyState(0x12) & 0x8000) != 0 &&
+                      (PoringWindowState.GetAsyncKeyState(0x20) & 0x8000) != 0;
+        if (pressed && !previous) Console.WriteLine("{\"type\":\"hotkey\"}");
+        previous = pressed;
+        System.Threading.Thread.Sleep(15);
+      }
+    });
+    worker.IsBackground = true;
+    worker.Start();
+  }
+}
 '@
+ [PoringHotkey]::Start()
 
 $monitorProcessId = [uint32]$PID
 $script:cachedWifi = @{ on = $false; connected = $false; ssid = ''; signal = $null; available = @() }
 $script:cachedBluetooth = @{ on = $false; known = $true; connected = @(); available = @() }
 $nextWifi = [DateTime]::MinValue
 $nextBluetooth = [DateTime]::MinValue
-$lastToggleCombo = $false
+$fullscreenCandidateWindow = [IntPtr]::Zero
+$fullscreenCandidateSince = [DateTime]::MinValue
 
 function Read-Wifi {
   $iface = (& netsh wlan show interfaces 2>$null) -join [Environment]::NewLine
@@ -48,7 +67,8 @@ function Read-Wifi {
 }
 
 function Read-Bluetooth {
-  $devices = @(Get-PnpDevice -Class Bluetooth -PresentOnly | Where-Object { $_.FriendlyName -and $_.FriendlyName -notmatch 'Bluetooth (Radio|Device|Enumerator)|RFCOMM|AVRCP|LE Enumerator' })
+  $allBluetooth = @(Get-PnpDevice -Class Bluetooth -PresentOnly)
+  $devices = @($allBluetooth | Where-Object { $_.FriendlyName -and $_.FriendlyName -notmatch '(?i)(Wireless Bluetooth|Bluetooth.*(Radio|Adapter|Enumerator|Device|Service|Profile)|RFCOMM|AVRCP|LE.*(Service|Profile|Enumerator)|Generic (Attribute|Access) Profile)' })
   $connected = [System.Collections.Generic.List[string]]::new()
   $available = [System.Collections.Generic.List[string]]::new()
   foreach ($device in $devices) {
@@ -58,7 +78,7 @@ function Read-Bluetooth {
     if ($isConnected) { $connected.Add($device.FriendlyName) }
     elseif ($device.Status -eq 'OK') { $available.Add($device.FriendlyName) }
   }
-  $radio = @(Get-PnpDevice -Class Bluetooth | Where-Object { $_.FriendlyName -match 'Bluetooth (Radio|Adapter)' -and $_.Status -eq 'OK' })
+  $radio = @($allBluetooth | Where-Object { $_.FriendlyName -match '(?i)(Wireless Bluetooth|Bluetooth.*(Radio|Adapter)|(?:Intel|Realtek|Qualcomm).*Bluetooth)' -and $_.Status -eq 'OK' })
   $script:cachedBluetooth = @{ on = ($radio.Count -gt 0); known = $true; connected = @($connected | Select-Object -Unique); available = @($available | Select-Object -Unique -First 12) }
 }
 
@@ -75,16 +95,21 @@ while ($true) {
   $classBuffer = [System.Text.StringBuilder]::new(256)
   [void][PoringWindowState]::GetClassName($window, $classBuffer, $classBuffer.Capacity)
   $windowClass = $classBuffer.ToString()
-  $combo = (([PoringWindowState]::GetAsyncKeyState(0x11) -band 0x8000) -ne 0) -and (([PoringWindowState]::GetAsyncKeyState(0x12) -band 0x8000) -ne 0)
-  $toggleHotkey = $combo -and -not $lastToggleCombo
-  $lastToggleCombo = $combo
   $ours = $foregroundPid -eq $monitorProcessId
   $shellWindow = $windowClass -in @('Progman','WorkerW','Shell_TrayWnd','Shell_SecondaryTrayWnd','NotifyIconOverflowWindow')
   $coversMonitor = ($rect.Left -le $monitorInfo.rcMonitor.Left + 2 -and $rect.Top -le $monitorInfo.rcMonitor.Top + 2 -and $rect.Right -ge $monitorInfo.rcMonitor.Right - 2 -and $rect.Bottom -ge $monitorInfo.rcMonitor.Bottom - 2)
   $maximized = (-not $ours) -and [PoringWindowState]::IsZoomed($window)
-  $fullScreen = (-not $ours) -and (-not $shellWindow) -and (-not $maximized) -and $coversMonitor
+  $fullScreenCandidate = (-not $ours) -and (-not $shellWindow) -and (-not $maximized) -and $coversMonitor
+  if ($fullScreenCandidate) {
+    if ($fullscreenCandidateWindow -ne $window) { $fullscreenCandidateWindow = $window; $fullscreenCandidateSince = [DateTime]::Now }
+    $fullScreen = ([DateTime]::Now - $fullscreenCandidateSince).TotalMilliseconds -ge 1200
+  } else {
+    $fullscreenCandidateWindow = [IntPtr]::Zero
+    $fullscreenCandidateSince = [DateTime]::MinValue
+    $fullScreen = $false
+  }
   if ([DateTime]::Now -ge $nextWifi) { Read-Wifi; $nextWifi = [DateTime]::Now.AddSeconds(7) }
   if ([DateTime]::Now -ge $nextBluetooth) { Read-Bluetooth; $nextBluetooth = [DateTime]::Now.AddSeconds(12) }
-  [pscustomobject]@{ type = 'platform'; hotkey = $toggleHotkey; fullScreen = $fullScreen; maximized = $maximized; rect = @{ x=$rect.Left; y=$rect.Top; width=($rect.Right-$rect.Left); height=($rect.Bottom-$rect.Top) }; wifi = $script:cachedWifi; bluetooth = $script:cachedBluetooth } | ConvertTo-Json -Compress -Depth 5
+  [pscustomobject]@{ type = 'platform'; fullScreen = $fullScreen; maximized = $maximized; foregroundPid = $foregroundPid; rect = @{ x=$rect.Left; y=$rect.Top; width=($rect.Right-$rect.Left); height=($rect.Bottom-$rect.Top) }; wifi = $script:cachedWifi; bluetooth = $script:cachedBluetooth } | ConvertTo-Json -Compress -Depth 5
   Start-Sleep -Milliseconds 90
 }

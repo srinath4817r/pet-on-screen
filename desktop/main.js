@@ -2,11 +2,24 @@ const { app, ipcMain, globalShortcut, dialog, shell, Notification, BrowserWindow
 const { execFile, spawn } = require('node:child_process');
 const { promisify } = require('node:util');
 const path = require('node:path');
+const { fileURLToPath } = require('node:url');
 const fs = require('node:fs');
 const os = require('node:os');
 const { read, write } = require('./settings');
 const { createWindows } = require('./windows');
 const { createTray } = require('./tray');
+
+const hasSingleInstanceLock = app.requestSingleInstanceLock();
+if (!hasSingleInstanceLock) {
+  dialog.showErrorBox('Poring Pet is already running', 'Poring Pet is already running on this PC. Check the system tray to open or hide it.');
+  app.exit(0);
+} else {
+  app.on('second-instance', () => {
+    if (!wins) return;
+    setHidden(false);
+    wins.capsule?.showInactive();
+  });
+}
 
 const chromiumCache = path.join(app.getPath('userData'), 'Cache');
 fs.mkdirSync(chromiumCache, { recursive: true });
@@ -15,6 +28,7 @@ app.commandLine.appendSwitch('disk-cache-dir', chromiumCache);
 
 let wins; let tray; let settings; let visible = true; let petOut = false; let fullScreen = false; let fullscreenOverride = false; let mediaBridge;
 let platformState = { wifi: { on: false, connected: false, ssid: '', signal: null, available: [] }, bluetooth: { on: false, known: false, connected: [], available: [] } };
+let lastForegroundPid = null, maximizedTarget = false, edgeDirection = 1;
 const pickedPaths = new Set();
 const shortcuts = new Set();
 const allowedProtocols = new Set(['https:', 'http:', 'mailto:']);
@@ -61,16 +75,35 @@ function placePet(random = false) {
   const area = display.workArea, bounds = wins.pet.getBounds();
   const x = random ? Math.round(area.x + Math.random() * Math.max(0, area.width - bounds.width)) : Math.round(area.x + (area.width - bounds.width) / 2);
   const y = random ? Math.round(area.y + Math.random() * Math.max(0, area.height - bounds.height)) : area.y + area.height - bounds.height;
+    if (bounds.x !== x || bounds.y !== y) wins.pet.setBounds({ x, y, width: bounds.width, height: bounds.height }, true);
+}
+function placePetOnTaskbarEdge(direction = 1) {
+  if (!wins?.pet || wins.pet.isDestroyed()) return;
+  const display = require('electron').screen.getDisplayMatching(wins.pet.getBounds());
+  const area = display.workArea, bounds = wins.pet.getBounds();
+  const margin = 24;
+  const x = direction < 0 ? area.x + margin : area.x + area.width - bounds.width - margin;
+  const y = area.y + area.height - bounds.height;
   wins.pet.setBounds({ x, y, width: bounds.width, height: bounds.height }, true);
 }
 function randomPetAction() {
   return ['LookAround', 'Happy', 'Run', 'Jump', 'Spin', 'Roll', 'Dash', 'Coding', 'Sleep'][Math.floor(Math.random() * 9)];
 }
 function handlePlatformState(state) {
-  if (!state || state.type !== 'platform') return;
-  if (state.hotkey) setHidden(visible);
+  if (!state) return;
+  if (state.type === 'hotkey') { setHidden(visible); return; }
+  if (state.type !== 'platform') return;
+  if (state.foregroundPid !== lastForegroundPid) {
+    lastForegroundPid = state.foregroundPid;
+    for (const win of allWindows()) if (win.isVisible() && !(fullScreen && !fullscreenOverride)) {
+      win.setAlwaysOnTop(true, 'screen-saver');
+      win.moveTop();
+    }
+  }
   const changedFullScreen = fullScreen !== Boolean(state.fullScreen);
   fullScreen = Boolean(state.fullScreen);
+  maximizedTarget = Boolean(state.maximized);
+  if (maximizedTarget && (settings.mode === 'desktop' || petOut)) placePetOnTaskbarEdge(edgeDirection);
   if (changedFullScreen && !fullScreen) fullscreenOverride = false;
   platformState = { wifi: state.wifi || platformState.wifi, bluetooth: state.bluetooth || platformState.bluetooth };
   for (const win of allWindows()) win.webContents.send('platform:state', { ...state, wifi: platformState.wifi, bluetooth: platformState.bluetooth });
@@ -116,15 +149,23 @@ function setMode(mode) {
 }
 function registerHotkey() {
   globalShortcut.unregisterAll();
-  settings.hotkey = 'Control+Alt';
+  settings.hotkey = 'Control+Alt+Space';
   write(settings);
 }
 function configureStartup() {
   if (process.platform !== 'win32') return;
   settings.startWithWindows = true;
   write(settings);
+  const executable = app.getPath('exe');
   const args = process.defaultApp && process.argv[1] ? [path.resolve(process.argv[1])] : [];
-  app.setLoginItemSettings({ openAtLogin: true, path: process.execPath, args });
+  app.setLoginItemSettings({ openAtLogin: true, path: executable, args, name: 'PoringPet' });
+  // Electron 31 can write an unquoted Run command when the install path has spaces.
+  // Keep a correctly quoted per-user Run entry so Windows can launch the installed app.
+  const quote = value => `"${String(value).replace(/"/g, '')}"`;
+  const command = [quote(executable), ...args.map(quote)].join(' ');
+  execFile('reg.exe', ['add', 'HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run', '/v', 'PoringPet', '/t', 'REG_SZ', '/d', command, '/f'], { windowsHide: true }, error => {
+    if (error) console.error(`Could not configure Windows startup: ${error.message}`);
+  });
 }
 function bindIpc() {
   ipcMain.on('window:ignore-mouse', (event, ignore) => {
@@ -144,11 +185,19 @@ function bindIpc() {
     return value;
   });
   ipcMain.handle('app:open-path', async (_event, value) => {
-    if (typeof value !== 'string' || value.length > 2048) throw new Error('Invalid application path.');
-    const resolved = path.resolve(value);
-    if (!['.exe', '.lnk'].includes(path.extname(resolved).toLowerCase()) || !fs.existsSync(resolved)) throw new Error('Choose an existing Windows application (.exe or .lnk).');
+    if (typeof value !== 'string' || !value.trim() || value.length > 2048) return { ok: false, error: 'Enter an application path or browse to an app.' };
+    let candidate = value.trim().replace(/^"(.*)"$/, '$1').replace(/%([^%]+)%/g, (_match, name) => process.env[name] || `%${name}%`);
+    try { if (/^file:/i.test(candidate)) candidate = fileURLToPath(candidate); } catch { return { ok: false, error: 'That file URL is not valid.' }; }
+    let resolved = path.resolve(candidate);
+    if (!fs.existsSync(resolved) && !/[\\/]/.test(candidate)) {
+      try { const found = await execFileAsync('where.exe', [candidate], { timeout: 3000, windowsHide: true, maxBuffer: 4096 }); resolved = path.resolve(found.stdout.split(/\r?\n/)[0].trim()); } catch {}
+    }
+    if (!fs.existsSync(resolved)) return { ok: false, error: `App location not found: ${candidate}` };
+    let stat; try { stat = fs.statSync(resolved); } catch { return { ok: false, error: 'Windows could not read that app location.' }; }
+    if (!stat.isFile() && !stat.isDirectory()) return { ok: false, error: 'Choose an app, shortcut, or folder.' };
     shortcuts.add(resolved);
-    return shell.openPath(resolved);
+    const error = await shell.openPath(resolved);
+    return error ? { ok: false, error } : { ok: true };
   });
   ipcMain.handle('media:control', async (_event, command) => {
     if (!['toggle', 'next', 'prev'].includes(command)) throw new Error('Invalid media command.');
@@ -214,6 +263,15 @@ function bindIpc() {
   ipcMain.on('pet:desktop-play', () => { petOut = true; placePet(false); wins.capsule.webContents.executeJavaScript('IslandApp?.setPetOut(true)'); applyMode(); });
   ipcMain.on('pet:return', () => { petOut = false; wins.capsule.webContents.executeJavaScript('IslandApp?.setPetOut(false)'); applyMode(); });
   ipcMain.on('pet:hit', () => wins?.pet?.webContents.send('pet:activity', { action: 'Surprised' }));
+  ipcMain.on('pet:move-by', (_event, delta) => {
+    const win = wins?.pet;
+    if (!win || win.isDestroyed() || !delta || !Number.isFinite(delta.dx) || !Number.isFinite(delta.dy)) return;
+    const display = require('electron').screen.getDisplayMatching(win.getBounds());
+    const bounds = win.getBounds(), area = display.workArea;
+    const x = Math.max(area.x - bounds.width + 60, Math.min(area.x + area.width - 60, bounds.x + Math.round(delta.dx)));
+    const y = Math.max(area.y, Math.min(area.y + area.height - 40, bounds.y + Math.round(delta.dy)));
+    win.setBounds({ ...bounds, x, y }, true);
+  });
 }
 app.whenReady().then(() => {
   Menu.setApplicationMenu(null);
@@ -234,7 +292,11 @@ app.whenReady().then(() => {
   setCapsuleBounds(380, 104);
   setInterval(() => {
     if ((fullScreen && !fullscreenOverride) || !visible || !(settings.mode === 'desktop' || petOut)) return;
-    if (Math.random() < .22) { placePet(true); wins?.pet?.webContents.send('pet:activity', { action: randomPetAction() }); }
+    if (Math.random() < .45) {
+      edgeDirection *= -1;
+      placePetOnTaskbarEdge(edgeDirection);
+      wins?.pet?.webContents.send('pet:activity', { action: ['Run', 'Roll', 'Walk'][Math.floor(Math.random() * 3)] });
+    } else wins?.pet?.webContents.send('pet:activity', { action: randomPetAction() });
   }, 7000);
   let loaded = 0;
   for (const win of allWindows()) win.webContents.on('did-finish-load', async () => {
